@@ -11,15 +11,12 @@ const useFetchData = ({
   loading: boolean;
   data: Employee[];
   error: Error | undefined;
-  fetchData: () => void
-} =>
-
-{
+} => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error>();
 
-  const fetchData = () => {
+  useEffect(() => {
     setLoading(true);
 
     fetch(endpoint)
@@ -35,9 +32,9 @@ const useFetchData = ({
       .finally(() => {
         setLoading(false);
       });
-  }
+  }, [endpoint]);
 
-  return { loading, fetchData, data, error };
+  return { loading, data, error };
 };
 
 export default useFetchData;
