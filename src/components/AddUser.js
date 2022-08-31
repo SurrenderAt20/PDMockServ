@@ -52,28 +52,26 @@ const AddUser = (props) => {
           ></input>
         </div>
 
-        <div className="new-expense__control">
+        <div className="">
           <label>Birthday</label>
           <input
-            type="number"
+            type="date"
             value={enteredBirthday}
             onChange={birthdayChangeHandler}
           ></input>
         </div>
 
-        <div className="new-expense__control">
+        <div className="">
           <label>Date</label>
           <input
-            type="date"
+            type="text"
             value={enteredSalary}
-            min="2019-01-01"
-            max="2024-12-31"
             onChange={salaryChangeHandler}
           ></input>
         </div>
       </div>
 
-      <div className="new-expense__actions">
+      <div className="">
         <button type="submit">Add User</button>
       </div>
     </form>
