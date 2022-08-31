@@ -1,7 +1,10 @@
 import "./DataList.css";
 import useFetchData from "hooks/useFetchData";
+import { useState } from "react";
 
 export function DataList() {
+
+  const [filter, setFilter] = useState("gender")
 
   const {
     data,
@@ -17,6 +20,7 @@ export function DataList() {
         fullName: userData.name,
         birthday: userData.birthDate,
         salary: userData.wage,
+        gender: userData.sex
       };
     }) || [];
 
@@ -24,12 +28,23 @@ export function DataList() {
     <section className="container list__container">
       <h2> Registered users </h2>
 
+
       <div>
+
+        <label className="filter">
+          <b>Filter:</b>
+          <select>
+            <option>All</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </label>
 
           <div className="headline">
             <h4>Name</h4>
             <h4>Birthday</h4>
             <h4>Hourly salary</h4>
+            <h4>Gender</h4>
           </div>
 
         {convertedUsers?.map((user) => (
@@ -37,7 +52,7 @@ export function DataList() {
             <h4>{user.fullName}</h4>
             <h4>{user.birthday}</h4>
             <h4>{user.salary}</h4>
-            {/* <h4>{user.location}</h4> */}
+            <h4>{user.gender}</h4>
           </div>
         ))}
       </div>

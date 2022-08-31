@@ -3,10 +3,7 @@ export interface Employee {
     name: string,
     birthDate: string,
     wage: number,
-    department: [{
-        name: string,
-        id: number
-    }]
+    sex: string
 }
 
 export interface UseFetchDataParams {

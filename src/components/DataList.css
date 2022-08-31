@@ -24,10 +24,20 @@
     transition: all 0.2s ease;
 }
 
+.filter {
+    padding: 2rem;
+}
+
+.filter select {
+    width: 100px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
 .headline {
     display: grid;
     gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 2rem;
     margin-bottom: 4rem;
 }
@@ -36,7 +46,7 @@
 .list__item  {
     display: grid;
     gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 2rem;
     border-bottom: 1px solid black;
 } 
