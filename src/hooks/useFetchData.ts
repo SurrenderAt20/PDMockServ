@@ -1,9 +1,5 @@
-import { Employee } from './../ts/interfaces/index';
+import { Employee, UseFetchDataParams} from './../ts/interfaces/index';
 import { useEffect, useState } from "react";
-
-interface UseFetchDataParams {
-  endpoint: string;
-}
 
 const useFetchData = ({
   endpoint,
@@ -22,7 +18,9 @@ const useFetchData = ({
     fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
+        
         setData(data.data);
+
       })
       .catch((error) => {
         if (error instanceof Error) {
@@ -33,7 +31,7 @@ const useFetchData = ({
         setLoading(false);
       });
   }, [endpoint]);
-
+  
   return { loading, data, error };
 };
 
