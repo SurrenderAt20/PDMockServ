@@ -1,6 +1,7 @@
 import "./DataList.css";
 import useFetchData from "hooks/useFetchData";
 import { useState } from "react";
+import { ConvertedEmployee, Employee } from "ts/interfaces";
 
 export function DataList() {
 
@@ -12,9 +13,9 @@ export function DataList() {
     error: isUserError,
   } = useFetchData({ endpoint: "api/user" });
   
-  const convertedUsers =
+  const convertedUsers:ConvertedEmployee[] =
     data.map((userData) => {
-
+      
       return {
         id: userData.id,
         fullName: userData.name,
@@ -28,6 +29,7 @@ export function DataList() {
     <section className="container list__container">
       <h2> Registered users </h2>
 
+      { isLoadingUsers && <div className="loadingData"> Loading data... </div>}
 
       <div>
 

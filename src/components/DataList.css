@@ -24,6 +24,11 @@
     transition: all 0.2s ease;
 }
 
+.loadingData {
+    display: flex;
+    text-align: center;
+}
+
 .filter {
     padding: 2rem;
 }
