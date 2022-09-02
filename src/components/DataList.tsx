@@ -30,6 +30,7 @@ export function DataList() {
       <h2> Registered users </h2>
 
       { isLoadingUsers && <div className="loadingData"> Loading data... </div>}
+      { isUserError && <div className="errorMessage">Could not fetch data</div>}
 
       <div>
 
