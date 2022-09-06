@@ -1,11 +1,9 @@
 import "./DataList.css";
 import useFetchData from "hooks/useFetchData";
-import { useState } from "react";
+import User from "./User";
 import { ConvertedEmployee, Employee } from "ts/interfaces";
 
-export function DataList() {
-
-  const [filter, setFilter] = useState("gender")
+export function DataList(props: any) {
 
   const {
     data,
@@ -25,14 +23,25 @@ export function DataList() {
       };
     }) || [];
 
+
+    if (!isLoadingUsers && !data?.length){
+      return(
+        <div className="empty">There is no available data to fetch</div>
+      )
+    }
+
+
   return (
     <section className="container list__container">
       <h2> Registered users </h2>
 
+      
       { isLoadingUsers && <div className="loadingData"> Loading data... </div>}
       { isUserError && <div className="errorMessage">Could not fetch data</div>}
 
       <div>
+
+        {data.length > 0 &&
 
         <label className="filter">
           <b>Filter:</b>
@@ -43,6 +52,8 @@ export function DataList() {
           </select>
         </label>
 
+        }
+
           <div className="headline">
             <h4>Name</h4>
             <h4>Birthday</h4>
@@ -50,17 +61,21 @@ export function DataList() {
             <h4>Gender</h4>
           </div>
 
-        {convertedUsers?.map((user) => (
-          <div key={user.id} className="list__item">
-            <h4>{user.fullName}</h4>
-            <h4>{user.birthday}</h4>
-            <h4>{user.salary}</h4>
-            <h4>{user.gender}</h4>
-          </div>
+        {convertedUsers.map((user) => (
+            <User 
+              fullName={user.fullName}
+              birthday={user.birthday}
+              salary={user.salary}
+              gender={user.gender}
+            />
         ))}
       </div>
     </section>
   );
+
+
+
+
 }
 
 export default DataList;

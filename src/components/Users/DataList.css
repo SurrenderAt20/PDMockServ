@@ -29,6 +29,14 @@
     text-align: center;
 }
 
+.empty {
+    display: flex;
+    margin-top: 4rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
 .filter {
     padding: 2rem;
 }

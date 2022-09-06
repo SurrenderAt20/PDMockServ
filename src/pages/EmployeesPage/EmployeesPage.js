@@ -1,12 +1,23 @@
-import DataList from "components/DataList";
+import NewUser from "components/NewUsers/NewUser";
+import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import { useState } from "react";
-import { API_URL_PATH } from "../../ts/constants";
+import { employeeData } from "../../mocks/employee-data";
 
 const EmployeesPage = () => {
+  const [user, setUsers] = useState(employeeData);
+
+  const addUserHandler = (user) => {
+    setUsers((prevUsers) => {
+      return [{ user, ...prevUsers }];
+    });
+    console.log(employeeData);
+  };
+
   return (
     <div>
-      <DataList />
+      <NewUser onAddUser={addUserHandler} />
+      <DataList value={user} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import employeeData from "./employee-data";
 
 const getEmployeeData = (req, res, ctx) => {
   return res(
-    ctx.delay(500),
+    ctx.delay(800),
     ctx.status(200),
     ctx.json({
       data: employeeData,
@@ -13,5 +13,5 @@ const getEmployeeData = (req, res, ctx) => {
 
 export const handlers = [
   rest.get("api/employees", getEmployeeData),
-  rest.get("api/user", getEmployeeData)
+  rest.get("api/user", getEmployeeData),
 ];

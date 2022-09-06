@@ -1,0 +1,9 @@
+
+
+.list__item  {
+    display: grid;
+    gap: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem;
+    border-bottom: 1px solid black;
+} 
