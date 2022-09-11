@@ -5,14 +5,12 @@ const useFetchData = ({
   endpoint,
 }: UseFetchDataParams): {
   loading: boolean;
-  empty: boolean;
   data: Employee[];
   error: Error | undefined;
 } => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error>();
-  const [empty, setEmpty] = useState(false)
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +33,7 @@ const useFetchData = ({
       });
   }, [endpoint]);
   
-  return { loading, data, error, empty };
+  return { loading, data, error };
 };
 
 export default useFetchData;

@@ -4,7 +4,7 @@ import useFetchData from "hooks/useFetchData";
 import User from "./User";
 import UserFilter from "components/Filter/UserFilter";
 import { ConvertedEmployee, Employee } from "ts/interfaces";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export function DataList() {
 
@@ -37,8 +37,18 @@ export function DataList() {
         )
       }
 
-    const filterHandler = (event:any) => {
+    const filterHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
       setFilter(event.target.value)
+    }
+
+
+    const search = (userData: any) => {
+      return userData.filter(
+        (user: ConvertedEmployee) => 
+        user.fullName.toLowerCase().includes(filter) ||
+        user.gender.toLowerCase().includes(filter) ||
+        user.birthday.toLowerCase().includes(filter)
+      )
     }
       
 
@@ -72,9 +82,7 @@ export function DataList() {
             <h4>Gender</h4>
           </div>
 
-        {convertedUsers.filter((user) =>{
-          return filter.toLowerCase() === '' ? user : user.fullName.toLowerCase().includes(filter);
-        }).map((user) => (
+        {search(convertedUsers).map((user:any) => (
             <User
               fullName={user.fullName}
               birthday={user.birthday}
