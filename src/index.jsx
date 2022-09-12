@@ -1,9 +1,10 @@
+import NewUser from "components/NewUsers/NewUser";
 import { EmployeesPage } from "pages/EmployeesPage";
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import AddUser from "components/AddUser";
+
 
 if (process.env.NODE_ENV === "development") {
   const { worker } = require("./mocks/browser");
@@ -13,9 +14,10 @@ if (process.env.NODE_ENV === "development") {
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
+
+
 root.render(
   <React.StrictMode>
-    <AddUser />
     <EmployeesPage />
   </React.StrictMode>
 );
