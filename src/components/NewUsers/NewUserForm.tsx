@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 
 export default function NewUserForm(props: any) {
 
-  const [name, setName] = useState("")
-  const [birthday, setBirthday] = useState("")
-  const [salary, setSalary] = useState("")
-  const [gender, setGender] = useState("")
+  const [enteredName, setEnteredName] = useState ("")
+  const [enteredBirthday, setBirthday] = useState("")
+  const [enteredSalary, setSalary] = useState("")
+  const [enteredGender, setGender] = useState("")
 
-
-  const nameChangeHandler = (event: any | undefined) => {
-    setName(event.target.value)
+  //Stores value in state
+  const nameChangeHandler = (event: any) => {
+    setEnteredName(event.target.value);
   }
 
   const birthdayChangeHandler = (event: any | undefined) => {
@@ -25,21 +25,22 @@ export default function NewUserForm(props: any) {
     setGender(event.target.value)
   }
 
-  const submitHandler = (event: any | undefined ) => {
+  const submitHandler = (event: any) => {
     event.preventDefault()
 
     const userData = {
-      fullName: name,
-      birthday: new Date(birthday),
-      salary: salary,
-      gender: gender
+      name: enteredName,
+      birthday: enteredBirthday,
+      salary: enteredSalary,
+      gender: enteredGender
     }
-
+    
     props.onSaveUserData(userData)
-    setName("")
+    setEnteredName("")
     setBirthday("")
     setSalary("")
     setGender("")
+
   }
 
 
@@ -50,8 +51,8 @@ export default function NewUserForm(props: any) {
           <label>Name</label>
           <input
             type="text"
-            value={name}
             onChange={nameChangeHandler}
+            value={enteredName}
           />
         </div>
         <div className='new-user'>
@@ -59,8 +60,8 @@ export default function NewUserForm(props: any) {
           <input
             type="date"
             min="2022-06-09"
-            value={birthday}
             onChange={birthdayChangeHandler}
+            value={enteredBirthday}
           />
         </div>
         <div className='new-user'>
@@ -68,16 +69,16 @@ export default function NewUserForm(props: any) {
           <input
             type="number"
             min="100"
-            value={salary}
             onChange={salaryChangeHandler}
+            value={enteredSalary}
           />
         </div>
         <div className='new-user'>
           <label>Gender</label>
           <input
             type="text"
-            value={gender}
             onChange={genderChangeHandler}
+            value={enteredGender}
           />
         </div>
       </div>
