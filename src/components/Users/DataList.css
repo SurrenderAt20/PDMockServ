@@ -5,6 +5,13 @@
     margin-top: 2rem;
 }
 
+.list__container h2 {
+    display: flex;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
 .btn__container {
     display: flex;
     margin: 1rem;
@@ -24,10 +31,6 @@
     transition: all 0.2s ease;
 }
 
-.loadingData {
-    display: flex;
-    text-align: center;
-}
 
 .empty {
     display: flex;
@@ -39,17 +42,10 @@
 
 .categories {
     display: grid;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
     gap: 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 2rem;
     margin-bottom: 4rem;
 }
-
-
-.list__item  {
-    display: grid;
-    gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 2rem;
-    border-bottom: 1px solid black;
-} 

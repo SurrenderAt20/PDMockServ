@@ -2,8 +2,10 @@
 
 .list__item  {
     display: grid;
+    position: relative;
     gap: 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid black;
 } 

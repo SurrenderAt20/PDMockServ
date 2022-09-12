@@ -15,16 +15,12 @@
 
 :root{
 
-  --color-bg: #FBF7F3;
+  --color-bg: #eee;
   --text-color: #000;
   --color-white: #fff; 
   --color-light: rgba(255, 255, 255, 0.6);
   --color-dark: #133337;
-
-
-
-
-  --container-width-lg: 75%;
+  /* --container-width-lg: 100%; */
   
   
 }

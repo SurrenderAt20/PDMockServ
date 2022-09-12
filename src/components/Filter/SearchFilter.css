@@ -14,5 +14,6 @@
 
 .search input {
     padding: 1rem;
-    width: 200px;
+    border-radius: 7px;
+    width: 20%;
 }
