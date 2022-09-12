@@ -1,10 +1,15 @@
 import "./DataList.css";
+import "./../Filter/SearchFilter.css"
 import useFetchData from "hooks/useFetchData";
 import User from "./User";
+import UserFilter from "components/Filter/UserFilter";
 import { ConvertedEmployee, Employee } from "ts/interfaces";
+import React, { useState } from "react";
 
-export function DataList(props: any) {
+export function DataList() {
 
+  const [filter, setFilter] = useState("")
+    
   const {
     data,
     loading: isLoadingUsers,
@@ -13,7 +18,6 @@ export function DataList(props: any) {
   
   const convertedUsers:ConvertedEmployee[] =
     data.map((userData) => {
-      
       return {
         id: userData.id,
         fullName: userData.name,
@@ -23,12 +27,30 @@ export function DataList(props: any) {
       };
     }) || [];
 
-
+    console.log(convertedUsers);
+    
+    
+    
     if (!isLoadingUsers && !data?.length){
       return(
         <div className="empty">There is no available data to fetch</div>
+        )
+      }
+
+    const filterHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setFilter(event.target.value)
+    }
+
+
+    const search = (userData: any) => {
+      return userData.filter(
+        (user: ConvertedEmployee) => 
+        user.fullName.toLowerCase().includes(filter) ||
+        user.gender.toLowerCase().includes(filter) ||
+        user.birthday.toLowerCase().includes(filter)
       )
     }
+      
 
 
   return (
@@ -42,27 +64,26 @@ export function DataList(props: any) {
       <div>
 
         {data.length > 0 &&
+          <div> 
 
-        <label className="filter">
-          <b>Filter:</b>
-          <select>
-            <option>All</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-        </label>
+        <form className='search'> 
+            <input onChange={filterHandler} placeholder='Search names...'/>
+        </form>
 
+
+            <UserFilter/>
+          </div>
         }
 
-          <div className="headline">
+          <div className="categories">
             <h4>Name</h4>
             <h4>Birthday</h4>
             <h4>Hourly salary</h4>
             <h4>Gender</h4>
           </div>
 
-        {convertedUsers.map((user) => (
-            <User 
+        {search(convertedUsers).map((user:any) => (
+            <User
               fullName={user.fullName}
               birthday={user.birthday}
               salary={user.salary}

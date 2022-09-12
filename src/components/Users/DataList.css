@@ -37,17 +37,7 @@
     align-items: center;
 }
 
-.filter {
-    padding: 2rem;
-}
-
-.filter select {
-    width: 100px;
-    padding: 0.5rem;
-    margin: 0.5rem;
-}
-
-.headline {
+.categories {
     display: grid;
     gap: 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;

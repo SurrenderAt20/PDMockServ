@@ -151,6 +151,25 @@ export const employeeData = [
     dateCreated: "2016-10-12",
     isDeactivated: true,
   },
+  {
+    id: 10,
+    name: "Zane Noobito",
+    sex: "male",
+    birthDate: "1975-01-05",
+    wage: 100,
+    departments: [
+      {
+        id: 1,
+        name: "Headquarters",
+      },
+      {
+        id: 2,
+        name: "Second Division",
+      },
+    ],
+    dateCreated: "2016-10-12",
+    isDeactivated: true,
+  },
 ];
 
 export default employeeData;

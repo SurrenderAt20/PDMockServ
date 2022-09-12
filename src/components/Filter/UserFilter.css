@@ -1,0 +1,9 @@
+.filter {
+    padding: 2rem;
+}
+
+.filter select {
+    width: 100px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
