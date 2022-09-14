@@ -9,7 +9,7 @@ export default function NewUserForm(props: any) {
   const [enteredGender, setGender] = useState("")
 
   //Stores value in state
-  const nameChangeHandler = (event: any) => {
+  const nameChangeHandler = (event: any | undefined) => {
     setEnteredName(event.target.value);
   }
 
@@ -29,7 +29,7 @@ export default function NewUserForm(props: any) {
     event.preventDefault()
 
     const userData = {
-      name: enteredName,
+      fullName: enteredName,
       birthday: enteredBirthday,
       salary: enteredSalary,
       gender: enteredGender
