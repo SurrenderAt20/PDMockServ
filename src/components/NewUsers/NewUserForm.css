@@ -28,6 +28,7 @@
     padding: 1rem;
 }
 
-.btn button{
+.error-text{
+    color: red;
 }
 

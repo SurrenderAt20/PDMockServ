@@ -1,8 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export function isEmpty (event: any) {
-    if (event.target.value.length < 0) {
-        event.preventDefault()
-        return false
-    }
-}
+/* export function isEmpty(event: any) {
+  if ((event.target.value.length = 0)) {
+    btn.disabled = true;
+    btn.style.opacity = 0.7;
+    btn.style.opacity = 0.7;
+  }
+} */

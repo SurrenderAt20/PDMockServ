@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./NewUserForm.css";
-import { isEmpty } from "../../validators/validators";
 
 export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
+  const [enteredNameLength, SetEnteredNameLength] = useState(true);
   const [enteredBirthday, setBirthday] = useState("");
+  const [enteredBirthdayIsValid, setEnteredBirthdayIsValid] = useState(true);
   const [enteredSalary, setSalary] = useState("");
   const [enteredGender, setGender] = useState("");
 
@@ -30,6 +32,26 @@ export default function NewUserForm(props: any) {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
+    if (enteredName.trim() == "") {
+      setEnteredNameIsValid(false);
+      return;
+    }
+
+    setEnteredNameIsValid(true);
+
+    if (enteredName.length < 2) {
+      SetEnteredNameLength(false);
+      return;
+    }
+
+    SetEnteredNameLength(true);
+
+    if (enteredBirthday.trim() == "") {
+      setEnteredBirthdayIsValid(false);
+    }
+
+    setEnteredBirthdayIsValid(true);
+
     const userData = {
       fullName: enteredName,
       birthday: enteredBirthday,
@@ -50,6 +72,12 @@ export default function NewUserForm(props: any) {
         <div className="new-user">
           <label>Name</label>
           <input type="text" onChange={nameChangeHandler} value={enteredName} />
+          {!enteredNameIsValid && (
+            <p className="error-text">Name must not be empty</p>
+          )}
+          {!enteredNameLength && (
+            <p className="error-text">Name must be longer</p>
+          )}
         </div>
         <div className="new-user">
           <label>Birthday</label>
@@ -59,6 +87,9 @@ export default function NewUserForm(props: any) {
             onChange={birthdayChangeHandler}
             value={enteredBirthday}
           />
+          {!enteredBirthdayIsValid && (
+            <p className="error-text">Birthday invalid</p>
+          )}
         </div>
         <div className="new-user">
           <label>Salary</label>
@@ -79,7 +110,7 @@ export default function NewUserForm(props: any) {
         </div>
       </div>
       <div className="submit-btn__container">
-        <button className="btn" type="submit">
+        <button name="btn" id="btn" className="btn" type="submit">
           Add User
         </button>
       </div>
