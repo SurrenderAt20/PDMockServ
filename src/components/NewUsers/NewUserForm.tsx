@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import './NewUserForm.css'
+import {isEmpty} from '../../validators/validators'
 
 
 export default function NewUserForm(props: any) {
@@ -9,19 +11,19 @@ export default function NewUserForm(props: any) {
   const [enteredGender, setGender] = useState("")
 
   //Stores value in state
-  const nameChangeHandler = (event: any | undefined) => {
+  const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredName(event.target.value);
   }
 
-  const birthdayChangeHandler = (event: any | undefined) => {
+  const birthdayChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBirthday (event.target.value)
   }
 
-  const salaryChangeHandler = (event: any | undefined) => {
+  const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSalary(event.target.value)
   }
 
-  const genderChangeHandler = (event:any | undefined) => {
+  const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGender(event.target.value)
   }
 
@@ -52,6 +54,7 @@ export default function NewUserForm(props: any) {
           <input
             type="text"
             onChange={nameChangeHandler}
+            onClick={isEmpty}
             value={enteredName}
           />
         </div>
@@ -82,8 +85,8 @@ export default function NewUserForm(props: any) {
           />
         </div>
       </div>
-      <div>
-        <button type="submit">Add User</button>
+      <div className='submit-btn__container'>
+        <button className='btn' type="submit">Add User</button>
       </div>
     </form>
   )

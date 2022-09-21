@@ -2,6 +2,12 @@ import React from 'react'
 
 export default function Routing() {
   return (
-    <div></div>
+    <nav>
+      <ul>
+        <li>
+          <div></div>
+        </li>
+      </ul>
+    </nav>
   )
 }

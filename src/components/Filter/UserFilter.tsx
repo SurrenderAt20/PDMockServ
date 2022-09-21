@@ -1,21 +1,20 @@
 import React from 'react'
 import './UserFilter.css'
 
-export default function UserFilter(filterProps: any) {
+export default function UserFilter(props: any) {
 
     const dropdownChangeHandler = (event: any) => {
-        filterProps.onChangeFilter(event.target.value)
+        props.onChangeFilter(event.target.value)
+        console.log(event.target.value)
     }
 
-
   return (
-
     <label className="filter">
     <b>Filter by gender:</b>
-    <select value={filterProps.selected} onChange={dropdownChangeHandler}>
-      <option>All</option>
-      <option>Male</option>
-      <option>Female</option>
+    <select value={props.selected} onChange={dropdownChangeHandler}>
+      <option value={undefined}>All</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
     </select>
   </label>
 
