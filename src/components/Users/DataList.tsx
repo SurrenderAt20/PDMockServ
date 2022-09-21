@@ -4,10 +4,7 @@ import User from "./User";
 import { ConvertedEmployee } from "ts/interfaces";
 import React, { useState } from "react";
 
-export function DataList(props: any) {
-
-  console.log(props);
-  
+export function DataList(props: any) {  
 
   return (
     <div>

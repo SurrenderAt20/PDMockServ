@@ -6,7 +6,11 @@ export interface Employee {
     sex: Gender;
 }
 
-type Gender = "male" | "female";
+export type Gender = "male" | "female";
+
+export interface EmployeeFilter {
+    gender?: Gender;
+}
 
 export interface ConvertedEmployee  {
     id: number;
