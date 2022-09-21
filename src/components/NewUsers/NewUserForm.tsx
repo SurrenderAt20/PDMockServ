@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ConvertedEmployee } from "ts/interfaces";
+import "./NewUserForm.css";
+import { isEmpty } from "../../validators/validators";
 
 export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
@@ -77,8 +78,10 @@ export default function NewUserForm(props: any) {
           />
         </div>
       </div>
-      <div>
-        <button type="submit">Add User</button>
+      <div className="submit-btn__container">
+        <button className="btn" type="submit">
+          Add User
+        </button>
       </div>
     </form>
   );

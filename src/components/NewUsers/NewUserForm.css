@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+.new-user__container{
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.new-user input{
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.submit-btn__container{
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem;
+}
+
+.btn button{
+}
+
