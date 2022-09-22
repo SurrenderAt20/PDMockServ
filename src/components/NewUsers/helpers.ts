@@ -21,6 +21,10 @@ export const validateForm = (data: ConvertedEmployee) => {
         return "Invalid characters";
       }
 
+      if (data.gender !== "female" || "male"){
+        return "Please select either male or female"
+      }
+
       if (data.salary < 1){
         return "The user must have a salary!"
       }

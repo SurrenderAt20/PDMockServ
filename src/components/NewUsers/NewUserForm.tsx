@@ -7,7 +7,7 @@ export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
   const [enteredBirthday, setBirthday] = useState("");
   const [enteredSalary, setSalary] = useState<number>(0);
-  const [enteredGender, setGender] = useState<Gender>("male");
+  const [enteredGender, setGender] = useState<Gender>("male" || "female");
   const [validationError, setValidationError] = useState<string | null>(null);
 
   //Stores value in state
@@ -28,6 +28,7 @@ export default function NewUserForm(props: any) {
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGender(event.target.value as Gender);
+    console.log(event.target.value);
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +53,7 @@ export default function NewUserForm(props: any) {
     setEnteredName("");
     setBirthday("");
     setSalary(0);
-    setGender("male");
+    setGender("male" || "female");
   };
 
   return (
@@ -87,6 +88,13 @@ export default function NewUserForm(props: any) {
             name="male"
             onChange={genderChangeHandler}
             checked={enteredGender === "male"}
+          />
+          <label>Female</label>
+          <input
+            type="radio"
+            name="female"
+            onChange={genderChangeHandler}
+            checked={enteredGender === "female"}
           />
         </div>
       </div>
