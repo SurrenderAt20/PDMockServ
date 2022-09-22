@@ -1,18 +1,27 @@
 import React, { useState } from "react";
+import { validateForm } from "./helpers";
 import "./NewUserForm.css";
 
 export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
-  const [enteredNameLength, SetEnteredNameLength] = useState(true);
+  const [enteredNameLengthShort, SetEnteredNameLengthShort] = useState(true);
+  const [enteredNameLengthLong, SetEnteredNameLengthLong] = useState(true);
+  const [enteredRegex, setEnteredRegex] = useState(true);
   const [enteredBirthday, setBirthday] = useState("");
   const [enteredBirthdayIsValid, setEnteredBirthdayIsValid] = useState(true);
   const [enteredSalary, setSalary] = useState("");
+  const [enteredSalaryIsValid, setEnteredSalaryIsValid] = useState(true);
   const [enteredGender, setGender] = useState("");
+  const [enteredGenderIsValid, setEnteredGenderIsValid] = useState(true);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   //Stores value in state
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredName(event.target.value);
+    const errors = validateForm(event.target.value);
+    setValidationError(errors);
+    console.log(errors);
   };
 
   const birthdayChangeHandler = (
@@ -40,17 +49,43 @@ export default function NewUserForm(props: any) {
     setEnteredNameIsValid(true);
 
     if (enteredName.length < 2) {
-      SetEnteredNameLength(false);
+      SetEnteredNameLengthShort(false);
       return;
     }
 
-    SetEnteredNameLength(true);
+    SetEnteredNameLengthShort(true);
+
+    if (enteredName.length > 20) {
+      SetEnteredNameLengthLong(false);
+      return;
+    }
+
+    SetEnteredNameLengthLong(true);
+
+    const nameRegex = new RegExp("/^[a-z ,.'-]+$/i");
+
+    if (enteredName.match(nameRegex)) {
+      setEnteredRegex(false);
+      return;
+    }
+
+    setEnteredRegex(true);
 
     if (enteredBirthday.trim() == "") {
       setEnteredBirthdayIsValid(false);
     }
 
     setEnteredBirthdayIsValid(true);
+
+    const male = "male";
+    const female = "female";
+
+    //investigate how we check for either male or female
+    /*     if (!enteredGender.match() === male && female) {
+      setEnteredGenderIsValid(false);
+    } */
+
+    setEnteredGenderIsValid(true);
 
     const userData = {
       fullName: enteredName,
@@ -72,11 +107,8 @@ export default function NewUserForm(props: any) {
         <div className="new-user">
           <label>Name</label>
           <input type="text" onChange={nameChangeHandler} value={enteredName} />
-          {!enteredNameIsValid && (
-            <p className="error-text">Name must not be empty</p>
-          )}
-          {!enteredNameLength && (
-            <p className="error-text">Name must be longer</p>
+          {validationError && validationError !== null && (
+            <p className="error-text">{validationError}</p>
           )}
         </div>
         <div className="new-user">
@@ -107,6 +139,11 @@ export default function NewUserForm(props: any) {
             onChange={genderChangeHandler}
             value={enteredGender}
           />
+          {!enteredGenderIsValid && (
+            <p className="error-text">
+              Please select either male or female as gender
+            </p>
+          )}
         </div>
       </div>
       <div className="submit-btn__container">
