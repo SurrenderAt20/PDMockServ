@@ -17,7 +17,7 @@ export interface ConvertedEmployee  {
     fullName: string;
     birthday: string;
     salary: number;
-    gender: Gender;
+    gender?: Gender;
 }
 
 export interface UseFetchDataParams {
