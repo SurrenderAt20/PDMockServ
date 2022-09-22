@@ -1,20 +1,18 @@
 import React, { useState } from "react";
+import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import "./NewUserForm.css";
 
 export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
   const [enteredBirthday, setBirthday] = useState("");
-  const [enteredSalary, setSalary] = useState("");
-  const [enteredGender, setGender] = useState("");
+  const [enteredSalary, setSalary] = useState<number>(0);
+  const [enteredGender, setGender] = useState<Gender>("male");
   const [validationError, setValidationError] = useState<string | null>(null);
 
   //Stores value in state
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredName(event.target.value);
-    const errors = validateForm(event.target.value);
-    setValidationError(errors);
-    console.log(errors);
   };
 
   const birthdayChangeHandler = (
@@ -24,14 +22,15 @@ export default function NewUserForm(props: any) {
   };
 
   const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSalary(event.target.value);
+    setSalary(Number(event.target.value));
+    console.log(event.target.value);
   };
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGender(event.target.value);
+    setGender(event.target.value as Gender);
   };
 
-  const submitHandler = (event: any) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const userData = {
@@ -41,11 +40,19 @@ export default function NewUserForm(props: any) {
       gender: enteredGender,
     };
 
+    const errors = validateForm(userData);
+    setValidationError(errors);
+    console.log(errors);
+
+    if (errors) {
+      return;
+    }
+
     props.onSaveUserData(userData);
     setEnteredName("");
     setBirthday("");
-    setSalary("");
-    setGender("");
+    setSalary(0);
+    setGender("male");
   };
 
   return (
@@ -54,9 +61,6 @@ export default function NewUserForm(props: any) {
         <div className="new-user">
           <label>Name</label>
           <input type="text" onChange={nameChangeHandler} value={enteredName} />
-          {validationError && validationError !== null && (
-            <p className="error-text">{validationError}</p>
-          )}
         </div>
         <div className="new-user">
           <label>Birthday</label>
@@ -71,19 +75,25 @@ export default function NewUserForm(props: any) {
           <label>Salary</label>
           <input
             type="number"
-            min="100"
+            min={0}
             onChange={salaryChangeHandler}
             value={enteredSalary}
           />
         </div>
         <div className="new-user">
-          <label>Gender</label>
+          <label>Male</label>
           <input
-            type="text"
+            type="radio"
+            name="male"
             onChange={genderChangeHandler}
-            value={enteredGender}
+            checked={enteredGender === "male"}
           />
         </div>
+      </div>
+      <div className="error__container">
+        {validationError && validationError !== null && (
+          <p className="error-text">{validationError}</p>
+        )}
       </div>
       <div className="submit-btn__container">
         <button name="btn" id="btn" className="btn" type="submit">

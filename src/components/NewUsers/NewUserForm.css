@@ -28,7 +28,14 @@
     padding: 1rem;
 }
 
+.error__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
 .error-text{
     color: red;
+    font-weight: bold;
 }
 

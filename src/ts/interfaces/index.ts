@@ -13,7 +13,7 @@ export interface EmployeeFilter {
 }
 
 export interface ConvertedEmployee  {
-    id: number;
+    id?: number;
     fullName: string;
     birthday: string;
     salary: number;

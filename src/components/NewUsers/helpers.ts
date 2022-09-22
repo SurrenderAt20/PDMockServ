@@ -1,22 +1,28 @@
-export const validateForm = (name: string) => {
+import { ConvertedEmployee } from "ts/interfaces"
 
-    if (name.trim() == "") {
+export const validateForm = (data: ConvertedEmployee) => {
+
+    if (data.fullName.trim() == "") {
         return "Name error"
       }
 
-      if(name.length < 2){
+      if (data.fullName.length < 2){
         return "Name not long enough"
       }
 
-      if (name.length > 20) {
+      if (data.fullName.length > 20) {
 
         return "Name too long"
       }
 
       const nameRegex = new RegExp("/^[a-z ,.'-]+$/i");
 
-      if (name.match(nameRegex)) {
+      if (data.fullName.match(nameRegex)) {
         return "Invalid characters";
+      }
+
+      if (data.salary < 1){
+        return "The user must have a salary!"
       }
 
       return ""
