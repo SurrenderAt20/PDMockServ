@@ -4,11 +4,16 @@ import { validateForm } from "./helpers";
 import "./NewUserForm.css";
 
 export default function NewUserForm(props: any) {
+  const [modal, setModal] = useState(false);
   const [enteredName, setEnteredName] = useState("");
   const [enteredBirthday, setBirthday] = useState("");
   const [enteredSalary, setSalary] = useState<number>(0);
   const [enteredGender, setGender] = useState<Gender>("male");
   const [validationError, setValidationError] = useState<string | null>(null);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   //Stores value in state
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
