@@ -4,16 +4,9 @@ import "./NewUserForm.css";
 
 export default function NewUserForm(props: any) {
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
-  const [enteredNameLengthShort, SetEnteredNameLengthShort] = useState(true);
-  const [enteredNameLengthLong, SetEnteredNameLengthLong] = useState(true);
-  const [enteredRegex, setEnteredRegex] = useState(true);
   const [enteredBirthday, setBirthday] = useState("");
-  const [enteredBirthdayIsValid, setEnteredBirthdayIsValid] = useState(true);
   const [enteredSalary, setSalary] = useState("");
-  const [enteredSalaryIsValid, setEnteredSalaryIsValid] = useState(true);
   const [enteredGender, setGender] = useState("");
-  const [enteredGenderIsValid, setEnteredGenderIsValid] = useState(true);
   const [validationError, setValidationError] = useState<string | null>(null);
 
   //Stores value in state
@@ -40,52 +33,6 @@ export default function NewUserForm(props: any) {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
-
-    if (enteredName.trim() == "") {
-      setEnteredNameIsValid(false);
-      return;
-    }
-
-    setEnteredNameIsValid(true);
-
-    if (enteredName.length < 2) {
-      SetEnteredNameLengthShort(false);
-      return;
-    }
-
-    SetEnteredNameLengthShort(true);
-
-    if (enteredName.length > 20) {
-      SetEnteredNameLengthLong(false);
-      return;
-    }
-
-    SetEnteredNameLengthLong(true);
-
-    const nameRegex = new RegExp("/^[a-z ,.'-]+$/i");
-
-    if (enteredName.match(nameRegex)) {
-      setEnteredRegex(false);
-      return;
-    }
-
-    setEnteredRegex(true);
-
-    if (enteredBirthday.trim() == "") {
-      setEnteredBirthdayIsValid(false);
-    }
-
-    setEnteredBirthdayIsValid(true);
-
-    const male = "male";
-    const female = "female";
-
-    //investigate how we check for either male or female
-    /*     if (!enteredGender.match() === male && female) {
-      setEnteredGenderIsValid(false);
-    } */
-
-    setEnteredGenderIsValid(true);
 
     const userData = {
       fullName: enteredName,
@@ -119,9 +66,6 @@ export default function NewUserForm(props: any) {
             onChange={birthdayChangeHandler}
             value={enteredBirthday}
           />
-          {!enteredBirthdayIsValid && (
-            <p className="error-text">Birthday invalid</p>
-          )}
         </div>
         <div className="new-user">
           <label>Salary</label>
@@ -139,11 +83,6 @@ export default function NewUserForm(props: any) {
             onChange={genderChangeHandler}
             value={enteredGender}
           />
-          {!enteredGenderIsValid && (
-            <p className="error-text">
-              Please select either male or female as gender
-            </p>
-          )}
         </div>
       </div>
       <div className="submit-btn__container">
