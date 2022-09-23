@@ -8,8 +8,10 @@ export interface Employee {
 
 export type Gender = "male" | "female";
 
+export type GenderFilterOption = Gender & 'all';
+
 export interface EmployeeFilter {
-    gender?: Gender;
+    gender?: GenderFilterOption;
 }
 
 export interface ConvertedEmployee  {
@@ -22,4 +24,4 @@ export interface ConvertedEmployee  {
 
 export interface UseFetchDataParams {
     endpoint: string;
-  }
+}

@@ -1,22 +1,25 @@
 import React from 'react'
+import {GenderFilterOption} from 'ts/interfaces'
 import './UserFilter.css'
 
-export default function UserFilter(props: any) {
+interface UserFilterProps {
+  selectedOption?: GenderFilterOption;
+  onChange: (value: GenderFilterOption) => void;
+}
 
-    const dropdownChangeHandler = (event: any) => {
-        props.onChangeFilter(event.target.value)
-        console.log(event.target.value)
-    }
+export default function UserFilter({selectedOption, onChange}: UserFilterProps) {
+  const handleOnChange = (event: any) => {
+      onChange(event.target.value as GenderFilterOption);
+  }
 
   return (
     <label className="filter">
-    <b>Filter by gender:</b>
-    <select value={props.selected} onChange={dropdownChangeHandler}>
-      <option value={undefined}>All</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-  </label>
-
-  )
+      <b>Filter by gender:</b>
+      <select value={selectedOption} onChange={handleOnChange}>
+        <option value="all">All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </label>
+  );
 }

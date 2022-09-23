@@ -6,24 +6,16 @@ import {
   EmployeeFilter,
   Employee,
   Gender,
+  GenderFilterOption,
 } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
-
-function filterUsers(users: ConvertedEmployee[], filters: EmployeeFilter) {
-  let filteredUsers = [...users];
-
-  if (filters.gender) {
-    filteredUsers.filter((user) => user.gender !== filters.gender);
-  }
-
-  return filteredUsers;
-}
+import {filterUsers} from "./helpers";
 
 const EmployeesPage = () => {
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
-  const [genderFilter, setGenderFilter] = useState<Gender | undefined>();
+  const [genderFilter, setGenderFilter] = useState<GenderFilterOption | undefined>();
 
   //Do Fetch in here
   const {
@@ -62,7 +54,6 @@ const EmployeesPage = () => {
     setGenderFilter(selectedGender);
   };
 
-  //put in userState
   const filteredUsers = filterUsers(users, { gender: genderFilter });
 
   const addUserHandler = (user: ConvertedEmployee) => {
@@ -72,7 +63,6 @@ const EmployeesPage = () => {
   };
 
   //###### Checks for any data available
-
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
   }
@@ -88,8 +78,8 @@ const EmployeesPage = () => {
 
       {users.length > 0 && (
         <UserFilter
-          selected={genderFilter}
-          onChangeFilter={filterChangeHandler}
+          selectedOption={genderFilter}
+          onChange={filterChangeHandler}
         />
       )}
 
