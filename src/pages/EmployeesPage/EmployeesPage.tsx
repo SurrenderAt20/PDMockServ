@@ -81,7 +81,7 @@ const EmployeesPage = () => {
     <section className="container list__container">
       <NewUser onAddUser={addUserHandler} />
 
-      <h2> Registered users </h2>
+      
 
       {isLoading && <div className="loadingData"> Loading data... </div>}
       {isError && <div className="errorMessage">Could not fetch data</div>}

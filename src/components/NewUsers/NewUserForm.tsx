@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import "./NewUserForm.css";
+import {AiFillPlusCircle} from "react-icons/ai"
 
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
@@ -62,59 +63,107 @@ export default function NewUserForm(props: any) {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="new-user__container">
-        <div className="new-user">
-          <label>Name</label>
-          <input type="text" onChange={nameChangeHandler} value={enteredName} />
-        </div>
-        <div className="new-user">
-          <label>Birthday</label>
-          <input
-            type="date"
-            min="2022-06-09"
-            onChange={birthdayChangeHandler}
-            value={enteredBirthday}
-          />
-        </div>
-        <div className="new-user">
-          <label>Salary</label>
-          <input
-            type="number"
-            min={0}
-            onChange={salaryChangeHandler}
-            value={enteredSalary}
-          />
-        </div>
-        <div className="new-user">
-          <label>Male</label>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            checked={enteredGender == "male"}
-            onChange={genderChangeHandler}
-          />
-          <label>Female</label>
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            checked={enteredGender == "female"}
-            onChange={genderChangeHandler}
-          />
+    <>
+
+      <div className="top__container">
+        <div className="top-elements">
+          <div className="headline">
+            <h2> Registered users </h2>
+          </div>
+          <button className="btn" onClick={toggleModal}>
+            <div>
+              <AiFillPlusCircle/>
+            </div>
+            <div>
+              Create user
+            </div>
+          </button>
         </div>
       </div>
-      <div className="error__container">
-        {validationError && validationError !== null && (
-          <p className="error-text">{validationError}</p>
-        )}
-      </div>
-      <div className="submit-btn__container">
-        <button name="btn" id="btn" className="btn" type="submit">
-          Add User
-        </button>
-      </div>
-    </form>
+
+      {modal && (
+        <div className="modal__container">
+          <div className="overlay">
+            <div className="modal-content">
+              <div className="header__container">
+                <h2 className="formHeadline"> Create User </h2>
+              </div>
+
+              <form onSubmit={submitHandler}>
+                <div className="new-user__container">
+                  {/*                   <div className="headline">
+                    <h3>Personal details</h3>
+                  </div> */}
+                  <div className="new-user">
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      onChange={nameChangeHandler}
+                      value={enteredName}
+                    />
+                  </div>
+                  <div className="new-user">
+                    <label>Birthday</label>
+                    <input
+                      type="date"
+                      min="2022-06-09"
+                      onChange={birthdayChangeHandler}
+                      value={enteredBirthday}
+                    />
+                  </div>
+                  <div className="new-user">
+                    <label>Salary</label>
+                    <input
+                      type="number"
+                      min={0}
+                      onChange={salaryChangeHandler}
+                      value={enteredSalary}
+                    />
+                  </div>
+                  <div className="new-user">
+                    <label>Male</label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      checked={enteredGender == "male"}
+                      onChange={genderChangeHandler}
+                    />
+                    <label>Female</label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      checked={enteredGender == "female"}
+                      onChange={genderChangeHandler}
+                    />
+                  </div>
+                </div>
+                <div className="error__container">
+                  {validationError && validationError !== null && (
+                    <p className="error-text">{validationError}</p>
+                  )}
+                </div>
+                <div className="submit-btn__container">
+                  <button name="btn" id="btn" className="btn" type="submit">
+                    Add User
+                  </button>
+                </div>
+                <div className="submit-btn__container">
+                  <button
+                    name="btn"
+                    id="btn"
+                    className="btn"
+                    onClick={toggleModal}
+                  >
+                    Close
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

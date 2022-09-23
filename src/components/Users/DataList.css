@@ -7,7 +7,6 @@
 
 .list__container h2 {
     display: flex;
-    border-bottom: 1px solid black;
     width: 100%;
     padding-bottom: 1rem;
 }
@@ -20,16 +19,26 @@
 
 .btn {
     width: 220px;
+    background-color: rgb(25, 155, 215);
+    color: white;
+    font-weight: bold;
     padding: 20px;
     border-radius: 10px;
 }
 
 .btn:hover {
+    background-color: rgb(25, 155, 215);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+
+}
+
+/* .btn:hover {
     background: rgba(0,0,0,0);
 	color: #3a7999;
 	box-shadow: inset 0 0 0 3px #3a7999;
     transition: all 0.2s ease;
-}
+} */
 
 
 .empty {
