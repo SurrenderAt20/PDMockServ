@@ -28,7 +28,6 @@ export default function NewUserForm(props: any) {
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGender(event.target.value as Gender);
-    /* console.log(event.target.value); */
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -53,7 +52,7 @@ export default function NewUserForm(props: any) {
     setEnteredName("");
     setBirthday("");
     setSalary(0);
-    setGender("male" && "female");
+    setGender("male" || "female");
   };
 
   return (
@@ -87,7 +86,7 @@ export default function NewUserForm(props: any) {
             type="radio"
             name="gender"
             value="male"
-            checked={enteredGender == "male"}
+            checked={enteredGender === "male"}
             onChange={genderChangeHandler}
           />
           <label>Female</label>
@@ -95,7 +94,7 @@ export default function NewUserForm(props: any) {
             type="radio"
             name="gender"
             value="female"
-            checked={enteredGender == "female"}
+            checked={enteredGender === "female"}
             onChange={genderChangeHandler}
           />
         </div>
