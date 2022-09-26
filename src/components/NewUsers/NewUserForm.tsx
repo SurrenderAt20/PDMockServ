@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import "./NewUserForm.css";
-import {AiFillPlusCircle} from "react-icons/ai"
+/* import { AiFillPlusCircle } from "react-icons/ai"; */
 
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
@@ -64,19 +64,14 @@ export default function NewUserForm(props: any) {
 
   return (
     <>
-
       <div className="top__container">
         <div className="top-elements">
           <div className="headline">
             <h2> Registered users </h2>
           </div>
           <button className="btn" onClick={toggleModal}>
-            <div>
-              <AiFillPlusCircle/>
-            </div>
-            <div>
-              Create user
-            </div>
+            <div>{/* <AiFillPlusCircle /> */}</div>
+            <div>Create user</div>
           </button>
         </div>
       </div>
