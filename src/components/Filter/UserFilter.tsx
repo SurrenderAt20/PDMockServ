@@ -1,16 +1,19 @@
-import React from 'react'
-import {GenderFilterOption} from 'ts/interfaces'
-import './UserFilter.css'
+import React from "react";
+import { GenderFilterOption } from "ts/interfaces";
+import "./UserFilter.css";
 
 interface UserFilterProps {
   selectedOption?: GenderFilterOption;
   onChange: (value: GenderFilterOption) => void;
 }
 
-export default function UserFilter({selectedOption, onChange}: UserFilterProps) {
+export default function UserFilter({
+  selectedOption,
+  onChange,
+}: UserFilterProps) {
   const handleOnChange = (event: any) => {
-      onChange(event.target.value as GenderFilterOption);
-  }
+    onChange(event.target.value as GenderFilterOption);
+  };
 
   return (
     <label className="filter">

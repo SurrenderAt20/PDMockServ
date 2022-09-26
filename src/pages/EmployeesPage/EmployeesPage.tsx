@@ -10,12 +10,14 @@ import {
 } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
-import {filterUsers} from "./helpers";
+import { filterUsers } from "./helpers";
 
 const EmployeesPage = () => {
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
-  const [genderFilter, setGenderFilter] = useState<GenderFilterOption | undefined>();
+  const [genderFilter, setGenderFilter] = useState<
+    GenderFilterOption | undefined
+  >();
 
   //Do Fetch in here
   const {
@@ -54,7 +56,10 @@ const EmployeesPage = () => {
     setGenderFilter(selectedGender);
   };
 
-  const filteredUsers = filterUsers(users, { gender: genderFilter });
+  const filteredUsers = filterUsers(users, {
+    gender: genderFilter,
+    name: "adan",
+  });
 
   const addUserHandler = (user: ConvertedEmployee) => {
     setUsers((prevUsers: ConvertedEmployee[]) => {

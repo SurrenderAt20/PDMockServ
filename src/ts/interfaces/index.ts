@@ -12,6 +12,7 @@ export type GenderFilterOption = Gender & 'all';
 
 export interface EmployeeFilter {
     gender?: GenderFilterOption;
+    name?: string;
 }
 
 export interface ConvertedEmployee  {

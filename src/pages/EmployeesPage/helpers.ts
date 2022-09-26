@@ -7,5 +7,9 @@ export function filterUsers(users: ConvertedEmployee[], filters: EmployeeFilter)
     filteredUsers = filteredUsers.filter((user) => user.gender === filters.gender);
   }
 
+  if(filters.name){
+    filteredUsers = filteredUsers.filter((user) => user.fullName.toLowerCase().includes(filters.name!))
+  }
+
   return filteredUsers;
 }
