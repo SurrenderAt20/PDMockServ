@@ -7,35 +7,170 @@
 }
 
 
-.new-user__container{
+.top__container {
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+ .top-elements{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.modal__container, .overlay {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 100vw;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.header__container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.header__container h2 {
+    padding: 1rem;
+}
+
+ .modal-content{
+    background: #f1f1f1;
+    border-radius: 20px;
+    width: 90%;
+    height: 90%;
+    margin-top: 3rem;
+    line-height: 1.4;
+}
+
+    .form {
+        border: 1px solid beige;
+        height: 500px;
+        margin-left: 15rem;
+        margin-right: 15rem;
+        margin-top: 3rem;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    .formHeadline {
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .formHeadline h2 {
+        padding: 1rem;
+    }
+
+ .form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    margin-top: 2rem;
+    background-color: #fff;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.new-user__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 1rem;
     justify-content: center;
 }
 
+.new-user label {
+    margin: 2rem;
+}
+
 .new-user input{
     border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.nameLabel {
+    margin: 1rem;
+}
+
+.nameInput {
+    width: 20rem;
     margin: 1rem;
     padding: 1rem;
+}
+
+.bdayLabel {
+    margin: 1rem;
+}
+
+.bdayInput {
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem; 
+}
+
+.salaryLabel {
+    margin: 1rem;
+}
+
+.salaryInput {
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem;  
+}
+
+.radioBtn {
+    margin-top: 2.5rem;
 }
 
 .submit-btn__container{
     display: flex;
     justify-content: center;
+    margin: 2rem;
 }
 
 .btn {
-    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn div{
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .error__container {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-top: 5rem;
 }
 
 .error-text{
     color: red;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 2rem;
+    border-radius: 10px;
     font-weight: bold;
 }
 

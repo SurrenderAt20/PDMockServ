@@ -1,4 +1,4 @@
-import NewUser from "components/NewUsers/NewUser";
+import Routing from "components/Routing/Routing";
 import { EmployeesPage } from "pages/EmployeesPage";
 import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
@@ -18,6 +18,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <Routing/>
     <EmployeesPage />
   </React.StrictMode>
 );
