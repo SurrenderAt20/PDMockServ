@@ -58,7 +58,6 @@ const EmployeesPage = () => {
 
   const filteredUsers = filterUsers(users, {
     gender: genderFilter,
-    name: "adan",
   });
 
   const addUserHandler = (user: ConvertedEmployee) => {
