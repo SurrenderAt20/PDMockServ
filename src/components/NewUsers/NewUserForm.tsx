@@ -66,11 +66,8 @@ export default function NewUserForm(props: any) {
     <>
       <div className="top__container">
         <div className="top-elements">
-          <div className="headline">
-            <h2> Registered users </h2>
-          </div>
+          <h2> Registered users </h2>
           <button className="btn" onClick={toggleModal}>
-            <div>{/* <AiFillPlusCircle /> */}</div>
             <div>Create user</div>
           </button>
         </div>
@@ -84,67 +81,74 @@ export default function NewUserForm(props: any) {
                 <h2 className="formHeadline"> Create User </h2>
               </div>
 
-              <form onSubmit={submitHandler}>
-                <div className="new-user__container">
-                  {/*                   <div className="headline">
-                    <h3>Personal details</h3>
-                  </div> */}
-                  <div className="new-user">
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      onChange={nameChangeHandler}
-                      value={enteredName}
-                    />
-                  </div>
-                  <div className="new-user">
-                    <label>Birthday</label>
-                    <input
-                      type="date"
-                      min="2022-06-09"
-                      onChange={birthdayChangeHandler}
-                      value={enteredBirthday}
-                    />
-                  </div>
-                  <div className="new-user">
-                    <label>Salary</label>
-                    <input
-                      type="number"
-                      min={0}
-                      onChange={salaryChangeHandler}
-                      value={enteredSalary}
-                    />
-                  </div>
-                  <div className="new-user">
-                    <label>Male</label>
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="male"
-                      checked={enteredGender == "male"}
-                      onChange={genderChangeHandler}
-                    />
-                    <label>Female</label>
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="female"
-                      checked={enteredGender == "female"}
-                      onChange={genderChangeHandler}
-                    />
-                  </div>
+              <form id="form" className="form" onSubmit={submitHandler}>
+                <div className="formHeadline">
+                  <h2>Personal Details</h2>
                 </div>
-                <div className="error__container">
-                  {validationError && validationError !== null && (
-                    <p className="error-text">{validationError}</p>
-                  )}
+                <div className="wrapper">
+                  <div className="new-user__container">
+                    <div className="new-user">
+                      <label className="nameLabel">Name</label>
+                      <br />
+                      <input
+                        className="nameInput"
+                        type="text"
+                        onChange={nameChangeHandler}
+                        value={enteredName}
+                      />
+                    </div>
+                    <div className="new-user">
+                      <label className="bdayLabel">Birthday</label>
+                      <br />
+                      <input
+                        className="bdayInput"
+                        type="date"
+                        min="2022-06-09"
+                        onChange={birthdayChangeHandler}
+                        value={enteredBirthday}
+                      />
+                    </div>
+                    <div className="new-user">
+                      <label className="salaryLabel">Salary</label>
+                      <br />
+                      <input
+                        className="salaryInput"
+                        type="number"
+                        min={0}
+                        onChange={salaryChangeHandler}
+                        value={enteredSalary}
+                      />
+                    </div>
+                    <div className="new-user radioBtn">
+                      <label>Male</label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={enteredGender == "male"}
+                        onChange={genderChangeHandler}
+                      />
+                      <label>Female</label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={enteredGender == "female"}
+                        onChange={genderChangeHandler}
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="submit-btn__container">
-                  <button name="btn" id="btn" className="btn" type="submit">
+                  <button
+                    form="form"
+                    name="btn"
+                    id="btn"
+                    className="btn"
+                    type="submit"
+                  >
                     Add User
                   </button>
-                </div>
-                <div className="submit-btn__container">
                   <button
                     name="btn"
                     id="btn"
@@ -155,6 +159,11 @@ export default function NewUserForm(props: any) {
                   </button>
                 </div>
               </form>
+              <div className="error__container">
+                {validationError && validationError !== null && (
+                  <p className="error-text">{validationError}</p>
+                )}
+              </div>
             </div>
           </div>
         </div>

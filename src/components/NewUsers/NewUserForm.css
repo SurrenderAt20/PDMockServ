@@ -12,17 +12,18 @@
     width: 100%;
 }
 
-.top-elements{
+ .top-elements{
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin: 1rem;
 }
 
 
 .modal__container, .overlay {
-    z-index: 2;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
     width: 100vw;
-    top: 100vw;
     top: 0;
     right: 0;
     left: 0;
@@ -34,51 +35,123 @@
     background: rgba(49,49,49,0.8);
 }
 
-.modal-content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    width: 90%;
-    height: 800px;
-    min-width: 300px;
+.header__container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-/* form {
-    display: flex;
-    width: 80%;
-    border-radius: 10px;
-    margin: 2rem;
-    background-color: #fff;
-} */
+.header__container h2 {
+    padding: 1rem;
+}
 
+ .modal-content{
+    background: #f1f1f1;
+    border-radius: 20px;
+    width: 90%;
+    height: 90%;
+    margin-top: 3rem;
+    line-height: 1.4;
+}
+
+    .form {
+        border: 1px solid beige;
+        height: 500px;
+        margin-left: 15rem;
+        margin-right: 15rem;
+        margin-top: 3rem;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    .formHeadline {
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .formHeadline h2 {
+        padding: 1rem;
+    }
+
+ .form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    margin-top: 2rem;
+    background-color: #fff;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
 
 .new-user__container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 1rem;
     justify-content: center;
 }
 
+.new-user label {
+    margin: 2rem;
+}
+
 .new-user input{
     border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.nameLabel {
+    margin: 1rem;
+}
+
+.nameInput {
+    width: 20rem;
     margin: 1rem;
     padding: 1rem;
+}
+
+.bdayLabel {
+    margin: 1rem;
+}
+
+.bdayInput {
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem; 
+}
+
+.salaryLabel {
+    margin: 1rem;
+}
+
+.salaryInput {
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem;  
+}
+
+.radioBtn {
+    margin-top: 2.5rem;
 }
 
 .submit-btn__container{
     display: flex;
     justify-content: center;
+    margin: 2rem;
 }
 
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin: 2rem;
+    margin-bottom: 2rem;
 }
 
 .btn div{
@@ -89,11 +162,15 @@
 .error__container {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-top: 5rem;
 }
 
 .error-text{
     color: red;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 2rem;
+    border-radius: 10px;
     font-weight: bold;
 }
 
