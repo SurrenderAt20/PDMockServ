@@ -6,7 +6,7 @@
 .cards__container {
     display: grid;
     position: relative;
-    gap: 100px;
+    gap: 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -21,13 +21,14 @@
     width: 200px;
     border-radius: 10px;
     transition: box-shadow .3s;
-    animation: fadein 1s;
-    -webkit-animation: fadein 1s;
+    animation: fadein 0.5s;
+    -webkit-animation: fadein 0.5s;
 }
 
 @keyframes fadein { /* Safari and Chrome */
     from {
         opacity:0;
+        transform: translateY(100%);
     }
     to {
         opacity:1;
