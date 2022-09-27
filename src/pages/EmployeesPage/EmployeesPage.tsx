@@ -12,6 +12,8 @@ import {
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
+import './EmployeesPage.css'
+import {BsFillGrid3X3GapFill} from 'react-icons/Bs'
 
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
@@ -75,37 +77,38 @@ const EmployeesPage = () => {
   }
 
   const toggleCards = () => {
-    setCards(!cards)
-  }
-
-  
+    setCards(!cards);
+  };
 
   return (
     <section className="container list__container">
       <NewUser onAddUser={addUserHandler} />
 
-      
-
       {isLoading && <div className="loadingData"> Loading data... </div>}
       {isError && <div className="errorMessage">Could not fetch data</div>}
 
-      {users.length > 0 && (
-        <UserFilter
-          selectedOption={genderFilter}
-          onChange={filterChangeHandler}
-        />
-      )}
+      <div className="filterGrid__container">
+        {users.length > 0 && (
+          <UserFilter
+            selectedOption={genderFilter}
+            onChange={filterChangeHandler}
+          />
+        )}
+
+        <div className="cardBtn">
+          <button className="" onClick={toggleCards}>
+            <BsFillGrid3X3GapFill/>
+          </button>
+        </div>
+      </div>
 
       <div>
         <section>
-          <div className="cardBtn">
-            <button className="btn" onClick={toggleCards}>
-              Show Cards
-            </button>
-          </div>
-
-          {cards ? <CardsList userData={filteredUsers}/> : <DataList userData={filteredUsers}/>}
-
+          {cards ? (
+            <CardsList userData={filteredUsers} />
+          ) : (
+            <DataList userData={filteredUsers} />
+          )}
         </section>
       </div>
     </section>

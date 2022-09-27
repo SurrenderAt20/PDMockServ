@@ -16,13 +16,17 @@ export default function UserFilter({
   };
 
   return (
-    <label className="filter">
-      <b>Filter by gender:</b>
-      <select value={selectedOption} onChange={handleOnChange}>
-        <option value="all">All</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </label>
+    <div className="filter__container">
+      <label className="filterLabel">
+        <b>Filter by gender:</b>
+      </label>
+      <div className="filterDropdown">
+        <select value={selectedOption} onChange={handleOnChange}>
+          <option value="all">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
   );
 }
