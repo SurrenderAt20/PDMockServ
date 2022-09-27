@@ -21,6 +21,17 @@
     width: 200px;
     border-radius: 10px;
     transition: box-shadow .3s;
+    animation: fadein 1s;
+    -webkit-animation: fadein 1s;
+}
+
+@keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
 
 

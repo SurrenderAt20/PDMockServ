@@ -99,6 +99,10 @@
     margin: 2rem;
 }
 
+.new-user input:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
 .new-user input{
     border-radius: 10px;
     border: 1px solid #e4e4e4;
@@ -116,11 +120,11 @@
     padding: 1rem;
 }
 
-.initialLabel {
+.initialsLabel {
     margin: 1rem;
 }
 
-.initialInput {
+.initialsInput {
     width: 20rem;
     margin: 1rem;
     padding: 1rem;
