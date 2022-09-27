@@ -1,6 +1,7 @@
 import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
+import CardsList from "components/Users/CardsList";
 import {
   ConvertedEmployee,
   EmployeeFilter,
@@ -13,6 +14,7 @@ import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
 
 const EmployeesPage = () => {
+  const [cards, setCards] = useState(false);
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
@@ -71,6 +73,12 @@ const EmployeesPage = () => {
     return <div className="empty">There is no available data to fetch</div>;
   }
 
+  const toggleCards = () => {
+    setCards(!cards)
+  }
+
+  
+
   return (
     <section className="container list__container">
       <NewUser onAddUser={addUserHandler} />
@@ -89,14 +97,14 @@ const EmployeesPage = () => {
 
       <div>
         <section>
-          <div className="categories">
-            <h4>Name</h4>
-            <h4>Birthday</h4>
-            <h4>Hourly salary</h4>
-            <h4>Gender</h4>
+          <div className="cardBtn">
+            <button className="btn" onClick={toggleCards}>
+              Show Cards
+            </button>
           </div>
 
-          <DataList userData={filteredUsers}></DataList>
+          {cards ? <CardsList userData={filteredUsers}/> : <DataList userData={filteredUsers}/>}
+
         </section>
       </div>
     </section>

@@ -1,17 +1,11 @@
-import "./DataList.css";
+import React from "react";
 import User from "./User";
 import { ConvertedEmployee } from "ts/interfaces";
+import './CardsList.css'
 
-export function DataList(props: any) {
+export default function CardsList(props: any) {
   return (
-    <div>
-      <div className="categories">
-        <h4>Name</h4>
-        <h4>Birthday</h4>
-        <h4>Hourly salary</h4>
-        <h4>Gender</h4>
-      </div>
-
+    <div className="cards__container">
       {props.userData?.map((user: ConvertedEmployee) => (
         <User
           id={user.id}
@@ -24,5 +18,3 @@ export function DataList(props: any) {
     </div>
   );
 }
-
-export default DataList;

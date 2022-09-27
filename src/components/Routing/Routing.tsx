@@ -10,22 +10,22 @@ export default function Routing() {
           <img src={planday} alt="Planday" />
         </li>
         <li>
-          <button> Home </button>
+          <a></a>
         </li>
         <li>
-          <button> Schedule </button>
+          <a></a>
         </li>
         <li>
-          <button> People </button>
+          <a></a>
         </li>
         <li>
-          <button> Reports </button>
+          <a></a>
         </li>
         <li>
-          <button> Payroll </button>
+          <a></a>
         </li>
         <li>
-          <button> Settings </button>
+          <a></a>
         </li>
       </ul>
     </nav>

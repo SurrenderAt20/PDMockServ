@@ -18,10 +18,14 @@ nav {
     padding-left: 1rem
 }
 
-nav button {
+nav ul li {
     display: flex;
     color: white;
     font-weight: 100;
+}
+
+nav li {
+    display: flex;
 }
 
 nav img {

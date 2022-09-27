@@ -38,6 +38,16 @@
     align-items: center;
 }
 
+.categories-naming {
+    display: grid;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
+    gap: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem;
+    margin-bottom: 4rem;
+}
+
 .categories {
     display: grid;
     border-bottom: 1px solid black;
@@ -46,4 +56,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 2rem;
     margin-bottom: 4rem;
+}
+
+.categories-cards {
+    color: red;
 }
