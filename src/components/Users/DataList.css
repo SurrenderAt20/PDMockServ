@@ -38,16 +38,6 @@
     align-items: center;
 }
 
-.categories-naming {
-    display: grid;
-    border-bottom: 1px solid black;
-    padding-bottom: 1rem;
-    gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 2rem;
-    margin-bottom: 4rem;
-}
-
 .categories {
     display: grid;
     border-bottom: 1px solid black;
@@ -58,6 +48,12 @@
     margin-bottom: 4rem;
 }
 
-.categories-cards {
-    color: red;
+.list__item__row{
+    display: grid;
+    position: relative;
+    gap: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
 }

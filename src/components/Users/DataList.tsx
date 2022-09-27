@@ -1,5 +1,4 @@
 import "./DataList.css";
-import User from "./User";
 import { ConvertedEmployee } from "ts/interfaces";
 
 export function DataList(props: any) {
@@ -12,16 +11,16 @@ export function DataList(props: any) {
         <h4>Gender</h4>
       </div>
 
+
       {props.userData?.map((user: ConvertedEmployee) => (
-        <User
-          id={user.id}
-          fullName={user.fullName}
-          birthday={user.birthday}
-          salary={user.salary}
-          gender={user.gender}
-        />
+        <div key={user.id} className="list__item__row">
+          <h4>{user.fullName}</h4>
+          <h4>{user.birthday}</h4>
+          <h4>{user.salary}</h4>
+          <h4>{user.gender}</h4>
+        </div>
       ))}
-    </div>
+    </div> 
   );
 }
 
