@@ -7,6 +7,7 @@ import "./NewUserForm.css";
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
   const [enteredName, setEnteredName] = useState("");
+  const [enteredInitials, setEnteredInitials] = useState("");
   const [enteredBirthday, setBirthday] = useState("");
   const [enteredSalary, setSalary] = useState<number>(0);
   const [enteredGender, setGender] = useState<Gender>("male");
@@ -20,6 +21,10 @@ export default function NewUserForm(props: any) {
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredName(event.target.value);
   };
+
+  const initialChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEnteredInitials(event.target.value);
+  }
 
   const birthdayChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -42,6 +47,7 @@ export default function NewUserForm(props: any) {
 
     const userData = {
       fullName: enteredName,
+      initials: enteredInitials,
       birthday: enteredBirthday,
       salary: enteredSalary,
       gender: enteredGender,
@@ -95,6 +101,16 @@ export default function NewUserForm(props: any) {
                         type="text"
                         onChange={nameChangeHandler}
                         value={enteredName}
+                      />
+                    </div>
+                    <div className="new-user">
+                      <label className="initialsLabel">Initials</label>
+                      <br />
+                      <input
+                        className="initialsInput"
+                        type="text"
+                        onChange={initialChangeHandler}
+                        value={enteredInitials}
                       />
                     </div>
                     <div className="new-user">

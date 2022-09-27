@@ -116,6 +116,16 @@
     padding: 1rem;
 }
 
+.initialLabel {
+    margin: 1rem;
+}
+
+.initialInput {
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
 .bdayLabel {
     margin: 1rem;
 }

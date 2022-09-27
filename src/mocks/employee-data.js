@@ -1,6 +1,7 @@
 export const employeeData = [
   {
     id: 1,
+    initials: "AS",
     name: "Adan Sherrer",
     sex: "male",
     birthDate: "1960-02-12",
@@ -16,6 +17,7 @@ export const employeeData = [
   },
   {
     id: 2,
+    initials: "AM",
     name: "Aleen Mccout",
     sex: "female",
     birthDate: "1980-03-05",
@@ -32,6 +34,7 @@ export const employeeData = [
   },
   {
     id: 3,
+    initials: "EG",
     name: "Elias Gutierrez",
     sex: "male",
     birthDate: "1995-03-05",
@@ -51,6 +54,7 @@ export const employeeData = [
   },
   {
     id: 4,
+    initials: "FW",
     name: "Francis Weibel",
     sex: "male",
     birthDate: "1997-07-05",
@@ -66,6 +70,7 @@ export const employeeData = [
   },
   {
     id: 5,
+    initials: "JB",
     name: "Jerry Barboza",
     sex: "male",
     birthDate: "1997-09-05",
@@ -85,6 +90,7 @@ export const employeeData = [
   },
   {
     id: 6,
+    initials: "KR",
     name: "Kandra Ruder",
     sex: "female",
     birthDate: "2001-07-05",
@@ -104,6 +110,7 @@ export const employeeData = [
   },
   {
     id: 7,
+    initials: "NW",
     name: "Nathan White",
     sex: "male",
     birthDate: "1993-12-12",
@@ -119,6 +126,7 @@ export const employeeData = [
   },
   {
     id: 8,
+    initials: "TU",
     name: "Trevor Uzzle",
     sex: "male",
     birthDate: "2005-03-05",
@@ -134,6 +142,7 @@ export const employeeData = [
   },
   {
     id: 9,
+    initials: "ZB",
     name: "Zane Barrus",
     sex: "male",
     birthDate: "1975-01-05",
@@ -153,6 +162,7 @@ export const employeeData = [
   },
   {
     id: 10,
+    initials: "ZN",
     name: "Zane Noobito",
     sex: "male",
     birthDate: "1975-01-05",

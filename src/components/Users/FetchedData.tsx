@@ -4,6 +4,8 @@ import { ConvertedEmployee, Employee } from "ts/interfaces";
 
 export default function FetchedData() {
 
+  //page to be deleted
+
     const {
         data,
         loading: isLoadingUsers,
@@ -15,6 +17,7 @@ export default function FetchedData() {
           return {
             id: userData.id,
             fullName: userData.name,
+            initials: userData.initials,
             birthday: userData.birthDate,
             salary: userData.wage,
             gender: userData.sex

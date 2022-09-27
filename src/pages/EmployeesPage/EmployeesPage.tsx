@@ -36,6 +36,7 @@ const EmployeesPage = () => {
       data.map((userData) => {
         return {
           id: userData.id,
+          initials: userData.initials,
           fullName: userData.name,
           birthday: userData.birthDate,
           salary: userData.wage,
