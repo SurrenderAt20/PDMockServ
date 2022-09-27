@@ -11,3 +11,7 @@
     align-items: center;
     /* margin: 1rem; */
 }
+
+.filterGrid__container button {
+    margin-top: 4rem;
+}

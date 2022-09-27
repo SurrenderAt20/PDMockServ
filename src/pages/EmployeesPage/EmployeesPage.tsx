@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
 import './EmployeesPage.css'
-import {BsFillGrid3X3GapFill} from 'react-icons/Bs'
 
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
@@ -96,8 +95,8 @@ const EmployeesPage = () => {
         )}
 
         <div className="cardBtn">
-          <button className="" onClick={toggleCards}>
-            <BsFillGrid3X3GapFill/>
+          <button className="btn" onClick={toggleCards}>
+            Show different format
           </button>
         </div>
       </div>
