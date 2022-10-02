@@ -3,8 +3,8 @@ import { ConvertedEmployee } from "ts/interfaces";
 import "./CardsList.css";
 
 export default function CardsList(props: any) {
-  var getInitials = function (string: any) {
-    var names = string.split(" "),
+  const getInitials = function (name: any) {
+    let names = name.split(" "),
       initials = names[0].substring(0, 1).toUpperCase();
 
     if (names.length > 1) {
@@ -13,25 +13,13 @@ export default function CardsList(props: any) {
     return initials;
   };
 
-  console.log(getInitials("FirstName LastName"));
-
-  /*   const getInitials = (string: any) => {
-    const names = string.split(` `);
-    let initials = names[0].substring(0, 1).toUpperCase;
-
-    if (names.length > 1) {
-      initials += names[names.length - 1].substring(0, 1).toUpperCase();
-    }
-    return initials;
-  }; */
-
   return (
     <div className="container__container">
       <div className="cards__container">
         {props.userData?.map((user: ConvertedEmployee) => (
           <div key={user.id} className="list__item__card">
             <div>
-              <h3>{/* {getInitials} */}</h3>
+              <h3>{getInitials(user.fullName)}</h3>
             </div>
             <h4>{user.fullName}</h4>
             <h4>{user.birthday}</h4>
