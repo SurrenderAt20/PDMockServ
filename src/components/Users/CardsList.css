@@ -12,7 +12,6 @@
 
 .list__item__card {
     display: flex;
-    flex-wrap: wrap;
     border: 1px solid #ccc;
     flex-direction: column;
     justify-content: center;
@@ -56,3 +55,14 @@ div h3 {
     z-index: 2;
     color: #fff;
 }
+
+@media only screen and (max-width: 1300px) {
+
+    .cards__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+  }

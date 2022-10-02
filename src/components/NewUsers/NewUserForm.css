@@ -72,7 +72,7 @@
         padding: 1rem;
     }
 
- .form__container {
+/*  .form__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,7 +81,7 @@
     width: 80%;
     margin-top: 2rem;
     background-color: #fff;
-}
+} */
 
 .wrapper {
     display: flex;
@@ -187,4 +187,17 @@
     border-radius: 10px;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 1300px) {
+
+    .form {
+        margin-left: 7rem;
+        margin-right: 3rem;
+        margin-top: 2rem;
+        border: 1px solid beige;
+        height: 70%;
+        width: 80%;
+    }
+
+  }
 
