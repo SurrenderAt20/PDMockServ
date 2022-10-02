@@ -7,6 +7,8 @@ export interface Employee {
     sex: Gender;
 }
 
+export type Name = string;
+
 export type Gender = "male" | "female";
 
 export type GenderFilterOption = Gender & 'all';
@@ -18,7 +20,7 @@ export interface EmployeeFilter {
 
 export interface ConvertedEmployee  {
     id?: number;
-    fullName: string;
+    fullName: Name;
     initials: string,
     birthday: string;
     salary: number;

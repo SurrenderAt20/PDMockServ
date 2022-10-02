@@ -1,7 +1,12 @@
 import "./DataList.css";
 import { ConvertedEmployee } from "ts/interfaces";
 
-export function DataList(props: any) {
+interface DataListProps {
+  userData: ConvertedEmployee[]
+}
+
+export function DataList(props: DataListProps) {
+
   return (
     <div>
       <div className="categories">

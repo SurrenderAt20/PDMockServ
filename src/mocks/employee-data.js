@@ -108,6 +108,22 @@ export const employeeData = [
     dateCreated: "0001-01-01",
     isDeactivated: false,
   },
+    {
+      id: 8,
+      initials: "TU",
+      name: "Trevor Uzzle",
+      sex: "male",
+      birthDate: "2005-03-05",
+      wage: 100,
+      departments: [
+        {
+          id: 1,
+          name: "Headquarters",
+        },
+      ],
+      dateCreated: "2020-05-16",
+      isDeactivated: false,
+    },
   {
     id: 7,
     initials: "NW",
@@ -122,22 +138,6 @@ export const employeeData = [
       },
     ],
     dateCreated: "0001-01-01",
-    isDeactivated: false,
-  },
-  {
-    id: 8,
-    initials: "TU",
-    name: "Trevor Uzzle",
-    sex: "male",
-    birthDate: "2005-03-05",
-    wage: 100,
-    departments: [
-      {
-        id: 1,
-        name: "Headquarters",
-      },
-    ],
-    dateCreated: "2020-05-16",
     isDeactivated: false,
   },
   {

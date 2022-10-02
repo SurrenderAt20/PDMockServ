@@ -1,19 +1,19 @@
 import React from 'react'
 import './SearchFilter.css'
 import { useState } from "react";
+import { Name } from 'ts/interfaces';
 
 export default function SearchFilter() {
+  const [searchFilter, setSearchFilter] = useState<Name>("");
+  console.log(searchFilter);
 
-    const [filter, setFilter] = useState("")
-    console.log(filter);
-
-    const filterHandler = (event:any) => {
-        setFilter(event.target.value)
-      }
+  const searchFilterHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchFilter(event.target.value);
+  };
 
   return (
     <form className='search'> 
-        <input onChange={filterHandler} placeholder='Search names...'/>
+        <input placeholder='Search names...'/>
     </form>
   )
 }

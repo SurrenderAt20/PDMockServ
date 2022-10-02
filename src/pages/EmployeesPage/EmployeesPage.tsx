@@ -2,17 +2,19 @@ import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
+import SearchFilter from "components/Filter/SearchFilter";
 import {
   ConvertedEmployee,
   EmployeeFilter,
   Employee,
   Gender,
   GenderFilterOption,
+  Name,
 } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
-import './EmployeesPage.css'
+import "./EmployeesPage.css";
 
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
