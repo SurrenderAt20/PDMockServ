@@ -1,14 +1,13 @@
 import React from "react";
 import { ConvertedEmployee } from "ts/interfaces";
+import { useState } from "react";
 import "./CardsList.css";
 
-
 interface CardsProps {
-  userData: ConvertedEmployee[]
+  userData: ConvertedEmployee[];
 }
 
 export default function CardsList(props: CardsProps) {
-
   const getInitials = (name: string) => {
     let names = name.split(" "),
       initials = names[0].substring(0, 1).toUpperCase();

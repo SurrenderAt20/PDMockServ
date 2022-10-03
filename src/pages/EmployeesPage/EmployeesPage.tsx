@@ -19,6 +19,7 @@ import "./EmployeesPage.css";
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
+  /* const [showCards, setShowCards] = useState(); */
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
     GenderFilterOption | undefined
@@ -76,6 +77,15 @@ const EmployeesPage = () => {
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
   }
+
+  useEffect(() => {
+    const cardsStorage = window.localStorage.getItem("CardsStorage");
+    setCards(JSON.parse(cardsStorage));
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("CardsStorage", JSON.stringify(cards));
+  }, [cards]);
 
   const toggleCards = () => {
     setCards(!cards);
