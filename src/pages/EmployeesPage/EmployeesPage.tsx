@@ -46,15 +46,13 @@ const EmployeesPage = () => {
     setFilteredUser(data);
   }, []);
 
-  //Missing dependency array?
   useEffect(() => {
-    const cardsStorage = window.localStorage.getItem("CardsStorage");
-    if (cardsStorage !== null) setCards(JSON.parse(cardsStorage));
-  });
+    const formatData = window.localStorage.getItem("cardFormatStorage");
+    if (formatData !== null) setCards(JSON.parse(formatData));
+  }, []);
 
-  //dependency change on every render?
   useEffect(() => {
-    window.localStorage.setItem("CardsStorage", JSON.stringify(cards));
+    window.localStorage.setItem("cardFormatStorage", JSON.stringify(cards));
   }, [cards]);
 
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
