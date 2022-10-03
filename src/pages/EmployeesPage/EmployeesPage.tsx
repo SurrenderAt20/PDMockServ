@@ -46,11 +46,13 @@ const EmployeesPage = () => {
     setFilteredUser(data);
   }, []);
 
+  //Missing dependency array?
   useEffect(() => {
     const cardsStorage = window.localStorage.getItem("CardsStorage");
     if (cardsStorage !== null) setCards(JSON.parse(cardsStorage));
   });
 
+  //dependency change on every render?
   useEffect(() => {
     window.localStorage.setItem("CardsStorage", JSON.stringify(cards));
   }, [cards]);
