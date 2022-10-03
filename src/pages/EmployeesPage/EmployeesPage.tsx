@@ -3,14 +3,7 @@ import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
 import SearchFilter from "components/Filter/SearchFilter";
-import {
-  ConvertedEmployee,
-  EmployeeFilter,
-  Employee,
-  Gender,
-  GenderFilterOption,
-  Name,
-} from "ts/interfaces";
+import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
@@ -19,7 +12,6 @@ import "./EmployeesPage.css";
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
-  /* const [showCards, setShowCards] = useState(); */
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
     GenderFilterOption | undefined
@@ -54,6 +46,15 @@ const EmployeesPage = () => {
     setFilteredUser(data);
   }, []);
 
+  useEffect(() => {
+    const cardsStorage = window.localStorage.getItem("CardsStorage");
+    if (cardsStorage !== null) setCards(JSON.parse(cardsStorage));
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("CardsStorage", JSON.stringify(cards));
+  }, [cards]);
+
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
     const gender = event.currentTarget as HTMLButtonElement;
     const value = gender.value;
@@ -73,23 +74,14 @@ const EmployeesPage = () => {
     });
   };
 
+  const toggleCards = () => {
+    setCards(!cards);
+  };
+
   //###### Checks for any data available
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
   }
-
-  useEffect(() => {
-    const cardsStorage = window.localStorage.getItem("CardsStorage");
-    setCards(JSON.parse(cardsStorage));
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem("CardsStorage", JSON.stringify(cards));
-  }, [cards]);
-
-  const toggleCards = () => {
-    setCards(!cards);
-  };
 
   return (
     <section className="container list__container">
