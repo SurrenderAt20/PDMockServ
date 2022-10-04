@@ -49,11 +49,13 @@ const EmployeesPage = () => {
   useEffect(() => {
     const formatData = window.localStorage.getItem("cardFormatStorage");
     if (formatData !== null) setCards(JSON.parse(formatData));
+    console.log({formatData});
+    
   }, []);
 
-  useEffect(() => {
+/*   useEffect(() => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(cards));
-  }, [cards]);
+  }, [cards]); */
 
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
     const gender = event.currentTarget as HTMLButtonElement;
@@ -75,6 +77,7 @@ const EmployeesPage = () => {
   };
 
   const toggleCards = () => {
+    window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
     setCards(!cards);
   };
 
