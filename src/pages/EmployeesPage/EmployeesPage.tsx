@@ -2,11 +2,13 @@ import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
-import SearchFilter from "components/Filter/SearchFilter";
 import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
+import { FaBeer } from 'react-icons/fa';
+import {BsFillGrid3X3GapFill} from 'react-icons/bs'
+import { FilterGrid } from "components/StylingComponents/EmployeesPage";
 import "./EmployeesPage.css";
 
 const EmployeesPage = () => {
@@ -93,7 +95,7 @@ const EmployeesPage = () => {
       {isLoading && <div className="loadingData"> Loading data... </div>}
       {isError && <div className="errorMessage">Could not fetch data</div>}
 
-      <div className="filterGrid__container">
+      <FilterGrid>
         {users.length > 0 && (
           <UserFilter
             selectedOption={genderFilter}
@@ -102,11 +104,9 @@ const EmployeesPage = () => {
         )}
 
         <div className="cardBtn">
-          <button className="btn" onClick={toggleCards}>
-            Show different format
-          </button>
+          <BsFillGrid3X3GapFill size={28} className="grid" onClick={toggleCards}></BsFillGrid3X3GapFill>
         </div>
-      </div>
+      </FilterGrid>
 
       <div>
         <section>

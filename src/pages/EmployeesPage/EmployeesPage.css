@@ -15,3 +15,14 @@
 .filterGrid__container button {
     margin-top: 4rem;
 }
+
+.grid {
+    display: flex;
+    align-items: center;
+    margin: 25px;
+    margin-top: 70%;
+}
+
+.grid:active {
+    color: blue;
+}
