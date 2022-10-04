@@ -1,5 +1,6 @@
 import React from "react";
 import { ConvertedEmployee } from "ts/interfaces";
+import { Container, CardsContainer } from "components/StylingComponents/Cards";
 import { useState } from "react";
 import "./CardsList.css";
 
@@ -19,8 +20,8 @@ export default function CardsList(props: CardsProps) {
   };
 
   return (
-    <div className="container__container">
-      <div className="cards__container">
+    <Container>
+      <CardsContainer className="cards__container">
         {props.userData?.map((user: ConvertedEmployee) => (
           <div key={user.id} className="list__item__card">
             <div>
@@ -32,7 +33,7 @@ export default function CardsList(props: CardsProps) {
             <h4>{user.gender}</h4>
           </div>
         ))}
-      </div>
-    </div>
+      </CardsContainer>
+    </Container>
   );
 }
