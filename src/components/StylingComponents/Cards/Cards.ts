@@ -41,6 +41,7 @@ const CardsComponent = styled.div`
   align-items: center;
   padding: 2rem;
   width: 200px;
+  line-height: 1.5rem;
   border-radius: 10px;
   transition: box-shadow 0.3s;
   animation: ${fadeIn} 0.5s;
@@ -49,7 +50,6 @@ const CardsComponent = styled.div`
     &:hover {
         box-shadow: 0 0 11px rgba(33,33,33,.2); 
     }
-
 `;
 
 const CardsInitials = styled.div`
@@ -57,13 +57,18 @@ const CardsInitials = styled.div`
     height: 100px;
     border-radius: 50%;
     margin-bottom: 2rem;
+    margin-top: 12px;
     background-color: rgb(32, 41, 52);
+    letter-spacing: 3px;
 `;
 
-const CardsData = styled.h4`
-
+const CardsInitialsHeadline = styled.h3`
+    display: flex;
+    padding-top: 5px;
+    align-items: center;
+    font-weight: bold;
 `;
 
 
 
-export { Container, CardsContainer, CardsComponent, CardsInitials };
+export { Container, CardsContainer, CardsComponent, CardsInitials, CardsInitialsHeadline};

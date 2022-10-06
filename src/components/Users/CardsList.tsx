@@ -1,6 +1,6 @@
 import React from "react";
 import { ConvertedEmployee } from "ts/interfaces";
-import { Container, CardsContainer, CardsComponent, CardsInitials } from "components/StylingComponents/Cards/Cards";
+import { Container, CardsContainer, CardsComponent, CardsInitials, CardsInitialsHeadline} from "components/StylingComponents/Cards/Cards";
 import { useState } from "react";
 import "./CardsList.css";
 
@@ -25,12 +25,12 @@ export default function CardsList(props: CardsProps) {
         {props.userData?.map((user: ConvertedEmployee) => (
           <CardsComponent key={user.id}>
             <CardsInitials>
-              <h3>{getInitials(user.fullName)}</h3>
+              <CardsInitialsHeadline>{getInitials(user.fullName)}</CardsInitialsHeadline>
             </CardsInitials>
-            <h4>{user.fullName}</h4>
-            <h4>{user.birthday}</h4>
-            <h4>{user.salary}</h4>
-            <h4>{user.gender}</h4>
+              <h4>{user.fullName}</h4>
+              <h4>{user.birthday}</h4>
+              <h4>{user.salary}</h4>
+              <h4>{user.gender}</h4>
           </CardsComponent>
         ))}
       </CardsContainer>
