@@ -6,10 +6,12 @@ import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
-import { FaBeer } from 'react-icons/fa';
-import {BsFillGrid3X3GapFill} from 'react-icons/bs'
-import {HiViewList} from 'react-icons/hi'
-import { FilterGrid, VisualFormatContainer } from "components/StylingComponents/EmployeesPage/EmployeesPage";
+import {
+  FilterGrid,
+  GridIconOne,
+  GridIconTwo,
+  IconContainer,
+} from "components/StylingComponents/EmployeesPage/EmployeesPage";
 import "./EmployeesPage.css";
 
 const EmployeesPage = () => {
@@ -48,8 +50,7 @@ const EmployeesPage = () => {
   useEffect(() => {
     const formatData = window.localStorage.getItem("cardFormatStorage");
     if (formatData !== null) setCards(JSON.parse(formatData));
-    console.log({formatData});
-    
+    console.log({ formatData });
   }, []);
 
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -96,10 +97,18 @@ const EmployeesPage = () => {
           />
         )}
 
-        <VisualFormatContainer>
-          <BsFillGrid3X3GapFill size={28} className="grid" onClick={toggleCards}></BsFillGrid3X3GapFill>
-          <HiViewList size={28} className="grid" onClick={toggleCards}></HiViewList>
-        </VisualFormatContainer>
+        <IconContainer>
+          <GridIconOne
+            size={28}
+            className="grid"
+            onClick={toggleCards}
+          ></GridIconOne>
+          <GridIconTwo
+            size={28}
+            className="grid"
+            onClick={toggleCards}
+          ></GridIconTwo>
+        </IconContainer>
       </FilterGrid>
 
       <div>
