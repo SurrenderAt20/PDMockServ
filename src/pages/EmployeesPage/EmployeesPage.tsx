@@ -8,7 +8,8 @@ import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
 import { FaBeer } from 'react-icons/fa';
 import {BsFillGrid3X3GapFill} from 'react-icons/bs'
-import { FilterGrid } from "components/StylingComponents/EmployeesPage";
+import {HiViewList} from 'react-icons/hi'
+import { FilterGrid, VisualFormatContainer } from "components/StylingComponents/EmployeesPage/EmployeesPage";
 import "./EmployeesPage.css";
 
 const EmployeesPage = () => {
@@ -19,15 +20,11 @@ const EmployeesPage = () => {
     GenderFilterOption | undefined
   >();
 
-  //Do Fetch in here
   const {
     data,
     loading: isLoading,
     error: isError,
   } = useFetchData({ endpoint: "api/user" });
-
-  //change to useEffect
-  //ConvertedEmployee[] ✅ - Trying to get an array of users not just one instance
 
   useEffect(() => {
     setUsers(
@@ -54,10 +51,6 @@ const EmployeesPage = () => {
     console.log({formatData});
     
   }, []);
-
-/*   useEffect(() => {
-    window.localStorage.setItem("cardFormatStorage", JSON.stringify(cards));
-  }, [cards]); */
 
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
     const gender = event.currentTarget as HTMLButtonElement;
@@ -89,7 +82,7 @@ const EmployeesPage = () => {
   }
 
   return (
-    <section className="container list__container">
+    <section>
       <NewUser onAddUser={addUserHandler} />
 
       {isLoading && <div className="loadingData"> Loading data... </div>}
@@ -103,9 +96,10 @@ const EmployeesPage = () => {
           />
         )}
 
-        <div className="cardBtn">
+        <VisualFormatContainer>
           <BsFillGrid3X3GapFill size={28} className="grid" onClick={toggleCards}></BsFillGrid3X3GapFill>
-        </div>
+          <HiViewList size={28} className="grid" onClick={toggleCards}></HiViewList>
+        </VisualFormatContainer>
       </FilterGrid>
 
       <div>

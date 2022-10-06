@@ -1,6 +1,6 @@
 import React from "react";
 import { ConvertedEmployee } from "ts/interfaces";
-import { Container, CardsContainer, CardsComponent, CardsInitials } from "components/StylingComponents/Cards";
+import { Container, CardsContainer, CardsComponent, CardsInitials } from "components/StylingComponents/Cards/Cards";
 import { useState } from "react";
 import "./CardsList.css";
 

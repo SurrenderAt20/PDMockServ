@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 const FilterGrid = styled.div`
     display: flex;
-    margin: 1rem;
     align-items: center
 `;
 
+const VisualFormatContainer = styled.div`
+    display: flex;
+`
 
-export {FilterGrid}
+export {FilterGrid, VisualFormatContainer}
