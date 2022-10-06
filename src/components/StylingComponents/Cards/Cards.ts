@@ -46,7 +46,9 @@ const CardsComponent = styled.div`
   animation: ${fadeIn} 0.5s;
   -webkit-animation: fadein 0.5s;
 
-
+    &:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
 
 `;
 
@@ -59,8 +61,9 @@ const CardsInitials = styled.div`
 `;
 
 const CardsData = styled.h4`
-    
 
 `;
+
+
 
 export { Container, CardsContainer, CardsComponent, CardsInitials };
