@@ -80,6 +80,15 @@ const EmployeesPage = () => {
     setCards(false);
   } */
 
+
+  const sorted = users.slice().sort(function(firstUser, secondUser) { 
+    if(firstUser.birthday < secondUser.birthday) return 1;
+    if(firstUser.birthday > secondUser.birthday) return -1;
+    return 0;
+   });
+
+
+
   //###### Checks for any data available
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
