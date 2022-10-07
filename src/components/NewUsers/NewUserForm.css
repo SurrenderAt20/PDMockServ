@@ -1,12 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-}
-
-
 .top__container {
     border-bottom: 1px solid black;
     width: 100%;

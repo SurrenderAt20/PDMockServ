@@ -12,7 +12,6 @@ import {
   GridIconTwo,
   IconContainer,
 } from "components/StylingComponents/EmployeesPage/EmployeesPage";
-import "./EmployeesPage.css";
 
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
@@ -33,7 +32,6 @@ const EmployeesPage = () => {
       data.map((userData) => {
         return {
           id: userData.id,
-          initials: userData.initials,
           fullName: userData.name,
           birthday: userData.birthDate,
           salary: userData.wage,
@@ -77,6 +75,11 @@ const EmployeesPage = () => {
     setCards(!cards);
   };
 
+/*   const toggleList = () => {
+    window.localStorage.setItem("ListFormatStorage", JSON.stringify(false));
+    setCards(false);
+  } */
+
   //###### Checks for any data available
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
@@ -99,13 +102,11 @@ const EmployeesPage = () => {
 
         <IconContainer>
           <GridIconOne
-            size={28}
-            className="grid"
+            size={25}
             onClick={toggleCards}
           ></GridIconOne>
           <GridIconTwo
             size={28}
-            className="grid"
             onClick={toggleCards}
           ></GridIconTwo>
         </IconContainer>

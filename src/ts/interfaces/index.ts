@@ -21,7 +21,6 @@ export interface EmployeeFilter {
 export interface ConvertedEmployee  {
     id?: number;
     fullName: Name;
-    initials: string,
     birthday: string;
     salary: number;
     gender?: Gender;

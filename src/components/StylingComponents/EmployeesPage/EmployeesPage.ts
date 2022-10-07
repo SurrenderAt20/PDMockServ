@@ -6,6 +6,7 @@ const FilterGrid = styled.div`
     display: flex;
     align-items: center;
     margin: 1rem;
+    justify-content: space-between;
     `;
 
 const IconContainer = styled.div`
@@ -17,13 +18,21 @@ const GridIconOne = styled(Grid3x3GapFill)`
     align-items: center;
     margin: 25px;
     margin-top: 3.5rem;
+
+    & :target {
+        color: red;
+      }
 `;
 
 const GridIconTwo = styled(List)`
     display: flex;
     align-items: center;
     margin: 25px;
-    margin-top: 3.5rem;  
+    margin-top: 3.5rem;
+
+    &:active {
+        color: red;
+    }
 `;
 
 
