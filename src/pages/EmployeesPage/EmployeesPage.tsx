@@ -81,12 +81,13 @@ const EmployeesPage = () => {
   } */
 
 
-  const sorted = users.slice().sort(function(firstUser, secondUser) { 
-    if(firstUser.birthday < secondUser.birthday) return 1;
-    if(firstUser.birthday > secondUser.birthday) return -1;
-    return 0;
-   });
-
+  const sorted = () => {
+      users.slice().sort( (firstUser, secondUser) => {
+        if (firstUser.birthday < secondUser.birthday) return 1;
+        if (firstUser.birthday > secondUser.birthday) return -1;
+        return 0;
+      })
+   }
 
 
   //###### Checks for any data available
