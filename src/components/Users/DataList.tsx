@@ -7,10 +7,18 @@ interface DataListProps {
 
 export function DataList(props: DataListProps) {
 
+  const sorted = () => {
+    users.slice().sort( (firstUser, secondUser) => {
+      if (firstUser.birthday < secondUser.birthday) return 1;
+      if (firstUser.birthday > secondUser.birthday) return -1;
+      return 0;
+    })
+ }
+
   return (
     <div>
       <div className="categories">
-        <h4>Name</h4>
+        <h4 onClick={}>Name</h4>
         <h4>Birthday</h4>
         <h4>Hourly salary</h4>
         <h4>Gender</h4>
