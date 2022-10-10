@@ -29,8 +29,12 @@ const GridIconTwo = styled(List) <{isActive: boolean}>`
     color: ${props => props.isActive ? 'red' : 'black'}
 `;
 
+const Headline = styled.h4 <{isActiveHeadline: boolean}>`
+    font-weight: ${props => props.isActiveHeadline ? 'bold' : 'normal'}
+`;
 
 
 
 
-export {FilterGrid, GridIconOne, GridIconTwo, IconContainer}
+
+export {FilterGrid, GridIconOne, GridIconTwo, IconContainer, Headline}

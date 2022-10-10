@@ -10,10 +10,12 @@ import {
   FilterGrid,
   GridIconOne,
   GridIconTwo,
+  Headline,
   IconContainer,
 } from "components/StylingComponents/EmployeesPage/EmployeesPage";
 
 const EmployeesPage = () => {
+  const [headline, setHeadline] = useState(false);
   const [cards, setCards] = useState(false);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
@@ -93,6 +95,14 @@ const EmployeesPage = () => {
     });
   };
 
+  const toggleHeadline = () => {
+    window.localStorage.setItem(
+      "headlineFormatStorage",
+      JSON.stringify(!headline)
+    );
+    setHeadline(!headline);
+  };
+
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
     setCards(!cards);
@@ -139,7 +149,12 @@ const EmployeesPage = () => {
           ) : (
             <section>
               <div className="categories">
-                <h4 onClick={() => sort("fullName")}>Name</h4>
+                <Headline
+                  isActiveHeadline={!headline}
+                  onClick={() => sort("fullName")}
+                >
+                  Name
+                </Headline>
                 <h4 onClick={() => sort("birthday")}>Birthday</h4>
                 <h4 onClick={() => sort("salary")}>Hourly salary</h4>
                 <h4 onClick={() => sort("gender")}>Gender</h4>
