@@ -65,13 +65,23 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
-  const sort = (column: any) => {
+  const sort = (columnName: "fullName") => {
+    console.log(columnName);
     if (order === "AscendingOrder") {
       const sorted = [...users].sort((a, b) =>
-        a[column].toLowerCase() > b[column].toLowerCase() ? 1 : -1
+        a[columnName].toLowerCase() > b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
       setOrder("DescendingOrder");
+    }
+
+    if (order === "DescendingOrder") {
+      const sorted = [...users].sort((a, b) =>
+        //@ts-ignore
+        a[columnName].toLowerCase() < b[columnName].toLowerCase() ? 1 : -1
+      );
+      setUsers(sorted);
+      setOrder("AscendingOrder");
     }
   };
 
@@ -124,7 +134,7 @@ const EmployeesPage = () => {
           ) : (
             <section>
               <div className="categories">
-                <h4 onClick={sorting({ fullName })}>Name</h4>
+                <h4 onClick={() => sort("fullName")}>Name</h4>
                 <h4>Birthday</h4>
                 <h4>Hourly salary</h4>
                 <h4>Gender</h4>
