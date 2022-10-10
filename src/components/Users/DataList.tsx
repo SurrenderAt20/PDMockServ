@@ -1,29 +1,29 @@
 import "./DataList.css";
 import { ConvertedEmployee } from "ts/interfaces";
+import { useState } from "react";
+import { Data } from "styled-icons/boxicons-regular";
 
 interface DataListProps {
-  userData: ConvertedEmployee[]
+  userData: ConvertedEmployee[];
 }
 
 export function DataList(props: DataListProps) {
+  /*   const [order, setOrder] = useState("AscendingOrder");
 
-  const sorted = () => {
-    users.slice().sort( (firstUser, secondUser) => {
-      if (firstUser.birthday < secondUser.birthday) return 1;
-      if (firstUser.birthday > secondUser.birthday) return -1;
-      return 0;
-    })
- }
+  const sortUsers = (column) => {
+    if (order === "AscendingOrder"){
+      const sorted = [...Data.]
+    }
+  } */
 
   return (
     <div>
-      <div className="categories">
-        <h4 onClick={}>Name</h4>
+      {/*       <div className="categories">
+        <h4>Name</h4>
         <h4>Birthday</h4>
         <h4>Hourly salary</h4>
         <h4>Gender</h4>
-      </div>
-
+      </div> */}
 
       {props.userData?.map((user: ConvertedEmployee) => (
         <div key={user.id} className="list__item__row">
@@ -33,7 +33,7 @@ export function DataList(props: DataListProps) {
           <h4>{user.gender}</h4>
         </div>
       ))}
-    </div> 
+    </div>
   );
 }
 

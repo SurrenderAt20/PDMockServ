@@ -15,11 +15,12 @@ import {
 
 const EmployeesPage = () => {
   const [cards, setCards] = useState(false);
-  const [users, setUsers] = useState<ConvertedEmployee[]>([]);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
     GenderFilterOption | undefined
   >();
+  const [order, setOrder] = useState("AscendingOrder");
+  const [users, setUsers] = useState<ConvertedEmployee[]>([]);
 
   const {
     data,
@@ -64,6 +65,16 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
+  const sort = (column: any) => {
+    if (order === "AscendingOrder") {
+      const sorted = [...users].sort((a, b) =>
+        a[column].toLowerCase() > b[column].toLowerCase() ? 1 : -1
+      );
+      setUsers(sorted);
+      setOrder("DescendingOrder");
+    }
+  };
+
   const addUserHandler = (user: ConvertedEmployee) => {
     setUsers((prevUsers: ConvertedEmployee[]) => {
       return [user, ...prevUsers];
@@ -75,20 +86,10 @@ const EmployeesPage = () => {
     setCards(!cards);
   };
 
-/*   const toggleList = () => {
+  /*   const toggleList = () => {
     window.localStorage.setItem("ListFormatStorage", JSON.stringify(false));
     setCards(false);
   } */
-
-
-  const sorted = () => {
-      users.slice().sort( (firstUser, secondUser) => {
-        if (firstUser.birthday < secondUser.birthday) return 1;
-        if (firstUser.birthday > secondUser.birthday) return -1;
-        return 0;
-      })
-   }
-
 
   //###### Checks for any data available
   if (!isLoading && !data?.length) {
@@ -111,14 +112,8 @@ const EmployeesPage = () => {
         )}
 
         <IconContainer>
-          <GridIconOne
-            size={25}
-            onClick={toggleCards}
-          ></GridIconOne>
-          <GridIconTwo
-            size={28}
-            onClick={toggleCards}
-          ></GridIconTwo>
+          <GridIconOne size={25} onClick={toggleCards}></GridIconOne>
+          <GridIconTwo size={28} onClick={toggleCards}></GridIconTwo>
         </IconContainer>
       </FilterGrid>
 
@@ -127,7 +122,16 @@ const EmployeesPage = () => {
           {cards ? (
             <CardsList userData={filteredUsers} />
           ) : (
-            <DataList userData={filteredUsers} />
+            <section>
+              <div className="categories">
+                <h4 onClick={sorting({ fullName })}>Name</h4>
+                <h4>Birthday</h4>
+                <h4>Hourly salary</h4>
+                <h4>Gender</h4>
+              </div>
+
+              <DataList userData={filteredUsers} />
+            </section>
           )}
         </section>
       </div>
