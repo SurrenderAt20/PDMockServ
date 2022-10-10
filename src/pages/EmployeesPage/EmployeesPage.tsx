@@ -2,12 +2,7 @@ import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
-import {
-  ConvertedEmployee,
-  Employee,
-  GenderFilterOption,
-  ColumnName,
-} from "ts/interfaces";
+import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
@@ -70,10 +65,12 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
-  const sort = (columnName: ColumnName) => {
+  const sort = (columnName: keyof Omit<ConvertedEmployee, "id">) => {
     console.log(columnName);
+
     if (order === "AscendingOrder") {
       const sorted = [...users].sort((a, b) =>
+        //@ts-ignore
         a[columnName].toLowerCase() > b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
@@ -143,9 +140,9 @@ const EmployeesPage = () => {
             <section>
               <div className="categories">
                 <h4 onClick={() => sort("fullName")}>Name</h4>
-                <h4>Birthday</h4>
-                <h4>Hourly salary</h4>
-                <h4>Gender</h4>
+                <h4 onClick={() => sort("birthday")}>Birthday</h4>
+                <h4 onClick={() => sort("salary")}>Hourly salary</h4>
+                <h4 onClick={() => sort("gender")}>Gender</h4>
               </div>
 
               <DataList userData={filteredUsers} />
