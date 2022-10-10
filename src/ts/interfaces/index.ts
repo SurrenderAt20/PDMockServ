@@ -26,6 +26,8 @@ export interface ConvertedEmployee  {
     gender?: Gender;
 }
 
+export type ColumnName = 'fullName' | 'salary' | 'gender' | 'birthday'
+
 export interface UseFetchDataParams {
     endpoint: string;
 }

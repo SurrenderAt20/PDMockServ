@@ -13,26 +13,20 @@ const IconContainer = styled.div`
     display: flex
 `;
     
-const GridIconOne = styled(Grid3x3GapFill)`
+const GridIconOne = styled(Grid3x3GapFill) <{isActive: boolean}>`
     display: flex;
     align-items: center;
     margin: 25px;
     margin-top: 3.5rem;
-
-    & :target {
-        color: red;
-      }
+    color: ${props => props.isActive ? 'red' : 'black'}
 `;
 
-const GridIconTwo = styled(List)`
+const GridIconTwo = styled(List) <{isActive: boolean}>`
     display: flex;
     align-items: center;
     margin: 25px;
     margin-top: 3.5rem;
-
-    &:active {
-        color: red;
-    }
+    color: ${props => props.isActive ? 'red' : 'black'}
 `;
 
 

@@ -2,7 +2,12 @@ import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
-import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
+import {
+  ConvertedEmployee,
+  Employee,
+  GenderFilterOption,
+  ColumnName,
+} from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
 import { filterUsers } from "./helpers";
@@ -65,7 +70,7 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
-  const sort = (columnName: "fullName") => {
+  const sort = (columnName: ColumnName) => {
     console.log(columnName);
     if (order === "AscendingOrder") {
       const sorted = [...users].sort((a, b) =>
@@ -96,11 +101,6 @@ const EmployeesPage = () => {
     setCards(!cards);
   };
 
-  /*   const toggleList = () => {
-    window.localStorage.setItem("ListFormatStorage", JSON.stringify(false));
-    setCards(false);
-  } */
-
   //###### Checks for any data available
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
@@ -122,8 +122,16 @@ const EmployeesPage = () => {
         )}
 
         <IconContainer>
-          <GridIconOne size={25} onClick={toggleCards}></GridIconOne>
-          <GridIconTwo size={28} onClick={toggleCards}></GridIconTwo>
+          <GridIconOne
+            isActive={cards}
+            size={25}
+            onClick={toggleCards}
+          ></GridIconOne>
+          <GridIconTwo
+            isActive={!cards}
+            size={28}
+            onClick={toggleCards}
+          ></GridIconTwo>
         </IconContainer>
       </FilterGrid>
 
