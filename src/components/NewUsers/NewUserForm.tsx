@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
+import Modal from "../Modal/Modal";
 import "./NewUserForm.css";
 import {TopContainer, TopElements, Button, ModalContainer, Overlay, ModalContent, HeaderContainer} from '../StylingComponents/Form/Form' 
 
@@ -34,7 +35,6 @@ export default function NewUserForm(props: any) {
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGender(event.target.value as Gender);
-    /* console.log(event.target.value); */
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -74,7 +74,12 @@ export default function NewUserForm(props: any) {
       </TopContainer>
 
       {modal && (
-        <ModalContainer>
+
+        <Modal>
+
+        </Modal>
+
+/*         <ModalContainer>
           <Overlay>
             <ModalContent>
               <HeaderContainer>
@@ -141,15 +146,6 @@ export default function NewUserForm(props: any) {
                   </div>
                 </div>
                 <div className="submit-btn__container">
-{/*                   <button
-                    form="form"
-                    name="btn"
-                    id="btn"
-                    className="btn"
-                    type="submit"
-                  >
-                    Add User
-                  </button> */}
                   <button
                     name="btn"
                     id="btn"
@@ -167,7 +163,7 @@ export default function NewUserForm(props: any) {
               </div>
             </ModalContent>
           </Overlay>
-        </ModalContainer>
+        </ModalContainer> */
       )}
     </>
   );
