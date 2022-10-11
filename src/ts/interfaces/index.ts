@@ -1,10 +1,13 @@
 export interface Employee {
     id: number,
     name: string,
+    initials: string,
     birthDate: string;
     wage: number;
     sex: Gender;
 }
+
+export type Name = string;
 
 export type Gender = "male" | "female";
 
@@ -17,12 +20,11 @@ export interface EmployeeFilter {
 
 export interface ConvertedEmployee  {
     id?: number;
-    fullName: string;
+    fullName: Name;
     birthday: string;
     salary: number;
     gender?: Gender;
 }
-
 export interface UseFetchDataParams {
     endpoint: string;
 }

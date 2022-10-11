@@ -38,16 +38,6 @@
     align-items: center;
 }
 
-.categories-naming {
-    display: grid;
-    border-bottom: 1px solid black;
-    padding-bottom: 1rem;
-    gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 2rem;
-    margin-bottom: 4rem;
-}
-
 .categories {
     display: grid;
     border-bottom: 1px solid black;
@@ -58,6 +48,18 @@
     margin-bottom: 4rem;
 }
 
-.categories-cards {
-    color: red;
+.list__item__row{
+    display: grid;
+    position: relative;
+    gap: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: box-shadow .3s;
+    border-bottom: 1px solid black;
+}
+
+.list__item__row:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
 }

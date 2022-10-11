@@ -1,9 +1,12 @@
-.filter {
-    padding: 2rem;
+.filter__container {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
 }
 
-.filter select {
-    width: 100px;
-    padding: 0.5rem;
-    margin: 0.5rem;
+.filterDropdown select {
+    padding: 1.5rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }

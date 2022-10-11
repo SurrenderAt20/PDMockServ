@@ -13,8 +13,9 @@ body {
 
 nav {
     display: flex;
+    align-items: center;
     background-color: rgb(32, 41, 52);;
-    height: 2.5rem;
+    height: 3.5rem;
     padding-left: 1rem
 }
 

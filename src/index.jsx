@@ -2,8 +2,8 @@ import Routing from "components/Routing/Routing";
 import { EmployeesPage } from "pages/EmployeesPage";
 import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { GlobalStyle } from "components/StylingComponents/Global/GlobalStyles";
 
 
 if (process.env.NODE_ENV === "development") {
@@ -18,7 +18,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Routing/>
+    <GlobalStyle />
+      <Routing/>
     <EmployeesPage />
   </React.StrictMode>
 );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import "./NewUserForm.css";
-/* import { AiFillPlusCircle } from "react-icons/ai"; */
+import {TopContainer, TopElements, Button, ModalContainer, Overlay, ModalContent, HeaderContainer} from '../StylingComponents/Form/Form' 
 
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
@@ -64,22 +64,23 @@ export default function NewUserForm(props: any) {
 
   return (
     <>
-      <div className="top__container">
-        <div className="top-elements">
+      <TopContainer>
+        <TopElements className="top-elements">
           <h2> Registered users </h2>
-          <button className="btn" onClick={toggleModal}>
+          <Button className="btn" onClick={toggleModal}>
             <div>Create user</div>
-          </button>
-        </div>
-      </div>
+          </Button>
+        </TopElements>
+      </TopContainer>
 
       {modal && (
-        <div className="modal__container">
-          <div className="overlay">
-            <div className="modal-content">
-              <div className="header__container">
+        <ModalContainer>
+          <Overlay>
+            <ModalContent>
+              <HeaderContainer>
                 <h2 className="formHeadline"> Create User </h2>
-              </div>
+                <button className="btn" form="form" type="submit"> Add User </button>
+              </HeaderContainer>
 
               <form id="form" className="form" onSubmit={submitHandler}>
                 <div className="formHeadline">
@@ -140,7 +141,7 @@ export default function NewUserForm(props: any) {
                   </div>
                 </div>
                 <div className="submit-btn__container">
-                  <button
+{/*                   <button
                     form="form"
                     name="btn"
                     id="btn"
@@ -148,7 +149,7 @@ export default function NewUserForm(props: any) {
                     type="submit"
                   >
                     Add User
-                  </button>
+                  </button> */}
                   <button
                     name="btn"
                     id="btn"
@@ -164,9 +165,9 @@ export default function NewUserForm(props: any) {
                   <p className="error-text">{validationError}</p>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
+            </ModalContent>
+          </Overlay>
+        </ModalContainer>
       )}
     </>
   );

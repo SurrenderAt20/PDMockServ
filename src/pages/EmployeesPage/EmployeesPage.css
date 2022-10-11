@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    list-style: none;
+}
+
+
+.filterGrid__container {
+    display: flex;
+    align-items: center;
+    /* margin: 1rem; */
+}
+
+.filterGrid__container button {
+    margin-top: 4rem;
+}
+
+.grid {
+    display: flex;
+    align-items: center;
+    margin: 25px;
+    margin-top: 3.5rem;
+}
+
+.grid:active {
+    color: rgb(25, 155, 215);
+}
