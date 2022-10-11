@@ -17,9 +17,11 @@ export const Container = styled.div`
 
     & h4 {
         font-family: Lato;
+        color: rgb(43, 55, 70);
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        letter-spacing: 1.5px;
         font-weight: 700;
-        font-size: 20px;
-        letter-spacing: 1px;
     }
 `;
 
@@ -84,4 +86,9 @@ export const StyledGroupHeading = styled.div`
     margin-bottom: 0.8rem;
     position: relative;
     min-height: auto;
+`;
+
+export const TopSpecs = styled.div`
+    margin-top: -0.85rem;
+    display: flex;
 `;

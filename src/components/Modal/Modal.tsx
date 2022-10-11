@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import {Container, ModalContainer, ContentHeader, FormContainer, Form, Group, StyledGroupHeading} from './styledModal'
+import {Container, ModalContainer, ContentHeader, FormContainer, Form, Group, StyledGroupHeading, TopSpecs} from './styledModal'
 
 
 export default function Modal(props: any) {
@@ -17,6 +17,7 @@ export default function Modal(props: any) {
                     <Group>
                         <StyledGroupHeading>
                             <h4>Personal Details</h4>
+                            <TopSpecs></TopSpecs>
                         </StyledGroupHeading>
 
                     </Group>
