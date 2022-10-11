@@ -51,7 +51,6 @@ const EmployeesPage = () => {
   useEffect(() => {
     const formatData = window.localStorage.getItem("cardFormatStorage");
     if (formatData !== null) setCards(JSON.parse(formatData));
-    console.log({ formatData });
   }, []);
 
   const handleGender = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -76,6 +75,7 @@ const EmployeesPage = () => {
         a[columnName].toLowerCase() > b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
+      setHeadline(!headline)
       setOrder("DescendingOrder");
     }
 
@@ -85,6 +85,7 @@ const EmployeesPage = () => {
         a[columnName].toLowerCase() < b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
+      setHeadline(!headline)
       setOrder("AscendingOrder");
     }
   };
@@ -95,13 +96,6 @@ const EmployeesPage = () => {
     });
   };
 
-  const toggleHeadline = () => {
-    window.localStorage.setItem(
-      "headlineFormatStorage",
-      JSON.stringify(!headline)
-    );
-    setHeadline(!headline);
-  };
 
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
@@ -150,7 +144,7 @@ const EmployeesPage = () => {
             <section>
               <div className="categories">
                 <Headline
-                  isActiveHeadline={!headline}
+                  isActiveHeadline={headline}
                   onClick={() => sort("fullName")}
                 >
                   Name

@@ -8,22 +8,9 @@ interface DataListProps {
 }
 
 export function DataList(props: DataListProps) {
-  /*   const [order, setOrder] = useState("AscendingOrder");
-
-  const sortUsers = (column) => {
-    if (order === "AscendingOrder"){
-      const sorted = [...Data.]
-    }
-  } */
 
   return (
     <div>
-      {/*       <div className="categories">
-        <h4>Name</h4>
-        <h4>Birthday</h4>
-        <h4>Hourly salary</h4>
-        <h4>Gender</h4>
-      </div> */}
 
       {props.userData?.map((user: ConvertedEmployee) => (
         <div key={user.id} className="list__item__row">
