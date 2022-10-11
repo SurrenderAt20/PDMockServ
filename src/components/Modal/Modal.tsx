@@ -3,11 +3,7 @@ import {useState} from 'react'
 
 
 export default function Modal() {
-/*     const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-        setModal(!modal);
-      }; */
+    //new modal branch
 
   return (
     <div>Modal</div>
