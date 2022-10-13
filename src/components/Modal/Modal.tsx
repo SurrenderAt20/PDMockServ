@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import {
   Container,
   ModalContainer,
@@ -17,9 +18,9 @@ import {
   NameFieldInputWrapper,
   NameFieldInput,
   NameFieldTwo,
-  EmailFieldsContainer,
-  EmailFieldInputWrapper,
-  EmailFieldInput,
+  BirthdayFieldsContainer,
+  BirthdayFieldInputWrapper,
+  BirthdayFieldInput,
 } from "./styledModal";
 
 export default function Modal(props: any) {
@@ -30,6 +31,7 @@ export default function Modal(props: any) {
       <ModalContainer>
         <ContentHeader>
           <h4>Create Employee</h4>
+          <AiOutlineClose></AiOutlineClose>
         </ContentHeader>
         <FormContainer>
           <Form>
@@ -44,17 +46,17 @@ export default function Modal(props: any) {
                   <NameFieldOne>
                     <NameFieldOneSpecs>
                       <Label>
-                        <span title="First name"> First name* </span>
+                        <span title="name"> Name* </span>
                       </Label>
                       <NameFieldInputWrapper>
-                        <NameFieldInput></NameFieldInput>
+                        <NameFieldInput type="text"></NameFieldInput>
                       </NameFieldInputWrapper>
                     </NameFieldOneSpecs>
                   </NameFieldOne>
                   <NameFieldTwo>
                     <NameFieldOneSpecs>
                       <Label>
-                        <span title="surname"> Surname* </span>
+                        <span title="salary"> Salary* </span>
                       </Label>
                       <NameFieldInputWrapper>
                         <NameFieldInput></NameFieldInput>
@@ -63,14 +65,37 @@ export default function Modal(props: any) {
                   </NameFieldTwo>
                 </NameFields>
 
-                <EmailFieldsContainer>
+                <BirthdayFieldsContainer>
                   <Label>
-                    <span title="email"> Email (Username)* </span>
+                    <span title="birthday"> Birthday* </span>
                   </Label>
-                  <EmailFieldInputWrapper>
-                    <EmailFieldInput></EmailFieldInput>
-                  </EmailFieldInputWrapper>
-                </EmailFieldsContainer>
+                  <BirthdayFieldInputWrapper>
+                    <BirthdayFieldInput type="date"></BirthdayFieldInput>
+                  </BirthdayFieldInputWrapper>
+                </BirthdayFieldsContainer>
+
+                <NameFields>
+                  <NameFieldOne>
+                    <NameFieldOneSpecs>
+                      <Label>
+                        <span title="gender"> Gender* </span>
+                      </Label>
+                      <NameFieldInputWrapper>
+                        <NameFieldInput type="text"></NameFieldInput>
+                      </NameFieldInputWrapper>
+                    </NameFieldOneSpecs>
+                  </NameFieldOne>
+                  <NameFieldTwo>
+                    <NameFieldOneSpecs>
+                      <Label>
+                        <span title="salary">Confirm</span>
+                      </Label>
+                      <NameFieldInputWrapper>
+                        <NameFieldInput></NameFieldInput>
+                      </NameFieldInputWrapper>
+                    </NameFieldOneSpecs>
+                  </NameFieldTwo>
+                </NameFields>
               </StyledFieldsContainer>
             </Group>
           </Form>

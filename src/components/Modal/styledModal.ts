@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import {AiOutlineClose} from "react-icons/ai";
 
 export const Container = styled.div`
   @import url("@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');")
@@ -163,17 +164,17 @@ export const NameFieldInput = styled.input`
 `;
 
 
-export const EmailFieldsContainer = styled.div`
+export const BirthdayFieldsContainer = styled.div`
   position: relative;
   margin-bottom: 0.75rem;
   min-height: 2rem;
 `;
 
-export const EmailFieldInputWrapper = styled.div`
+export const BirthdayFieldInputWrapper = styled.div`
   position: relative;
 `;
 
-export const EmailFieldInput = styled.input`
+export const BirthdayFieldInput = styled.input`
   background: rgb(255, 255, 255);
   width: 100%;
   height: 2rem;
@@ -186,3 +187,31 @@ export const EmailFieldInput = styled.input`
   font-weight: 400;
   letter-spacing: 0.0125rem;
 `;
+
+
+export const RadioFieldsButtonContainer = styled.div`
+  position: relative;
+  margin-bottom: 0.75rem;
+  min-height: 2rem;
+`;
+
+export const RadioFieldFieldInputWrapper = styled.div`
+  position: relative;
+`;
+
+export const RadioFieldInput = styled.input`
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(205, 213, 223);
+  padding-left: 0.6rem;
+  color: rgb(43, 55, 70);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.0125rem;
+`;
+
+
+

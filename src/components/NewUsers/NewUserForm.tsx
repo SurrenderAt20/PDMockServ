@@ -3,7 +3,15 @@ import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import Modal from "../Modal/Modal";
 import "./NewUserForm.css";
-import {TopContainer, TopElements, Button, ModalContainer, Overlay, ModalContent, HeaderContainer} from '../StylingComponents/Form/Form' 
+import {
+  TopContainer,
+  TopElements,
+  Button,
+  ModalContainer,
+  Overlay,
+  ModalContent,
+  HeaderContainer,
+} from "../StylingComponents/Form/Form";
 
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
@@ -74,12 +82,11 @@ export default function NewUserForm(props: any) {
       </TopContainer>
 
       {modal && (
+        <form onSubmit={submitHandler}>
+          <Modal></Modal>
+        </form>
 
-        <Modal>
-
-        </Modal>
-
-/*         <ModalContainer>
+        /*         <ModalContainer>
           <Overlay>
             <ModalContent>
               <HeaderContainer>
