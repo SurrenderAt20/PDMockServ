@@ -30,19 +30,25 @@ import {
   LabelAndInputWrapper,
 } from "./styledModal";
 
-export default function Modal(props: any) {
+interface Props {
+  title: string;
+  children: React.ReactNode;
+}
+
+export default function Modal({ title, children }: Props) {
   //new modal branch
 
   return (
     <Container>
       <ModalContainer>
         <ContentHeader>
-          <h4>Create Employee</h4>
+          <h4>{title}</h4>
           <TopWrapper>
             <DefaultButton>Save</DefaultButton>
             <StyledCloseIcon></StyledCloseIcon>
           </TopWrapper>
         </ContentHeader>
+        {children}
         <FormContainer>
           <Form>
             <Group>
