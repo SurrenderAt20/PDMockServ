@@ -13,7 +13,10 @@ import {
   NameFields,
   NameFieldOne,
   NameFieldOneSpecs,
-  NameFieldOneLabel
+  NameFieldOneLabel,
+  NameFieldInputWrapper,
+  NameFieldInput,
+  NameFieldTwo,
 } from "./styledModal";
 
 export default function Modal(props: any) {
@@ -37,12 +40,24 @@ export default function Modal(props: any) {
                 <NameFields>
                   <NameFieldOne>
                     <NameFieldOneSpecs>
-                        <NameFieldOneLabel>
-                            <span title="First name"> First name </span>
-                        </NameFieldOneLabel>
+                      <NameFieldOneLabel>
+                        <span title="First name"> First name* </span>
+                      </NameFieldOneLabel>
+                      <NameFieldInputWrapper>
+                        <NameFieldInput></NameFieldInput>
+                      </NameFieldInputWrapper>
                     </NameFieldOneSpecs>
                   </NameFieldOne>
-                  <NameFieldOne></NameFieldOne>
+                  <NameFieldTwo>
+                    <NameFieldOneSpecs>
+                      <NameFieldOneLabel>
+                        <span title="First name"> First name* </span>
+                      </NameFieldOneLabel>
+                      <NameFieldInputWrapper>
+                        <NameFieldInput></NameFieldInput>
+                      </NameFieldInputWrapper>
+                    </NameFieldOneSpecs>
+                  </NameFieldTwo>
                 </NameFields>
               </StyledFieldsContainer>
             </Group>

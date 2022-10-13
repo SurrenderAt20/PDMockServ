@@ -8,6 +8,7 @@ export const Container = styled.div`
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 100%;
   background: rgba(35, 45, 57, 0.6);
   padding: 1rem;
   z-index: 110;
@@ -15,9 +16,9 @@ export const Container = styled.div`
   & h4 {
     font-family: Lato;
     color: rgb(43, 55, 70);
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    letter-spacing: 1.5px;
+    font-size: 1.5rem;
+    line-height: 1.2rem;
+    letter-spacing: 1px;
     font-weight: 700;
   }
 `;
@@ -43,7 +44,7 @@ export const ContentHeader = styled.div`
   align-items: stretch;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 2rem;
   transition: box-shadow 0.3s ease 0s;
   flex-shrink: 0;
   z-index: 1;
@@ -68,8 +69,7 @@ export const Form = styled.div`
 
 export const Group = styled.div`
   background-color: white;
-  width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 4px;
   box-shadow: rgb(13 80 110 / 64%) 0px 0px 0.0625rem,
     rgb(13 80 110 / 8%) 0px 0.25rem 0.5rem, rgb(13 80 110 / 4%) 0px 0.5rem 1rem;
@@ -111,6 +111,11 @@ export const NameFieldOne = styled.div`
   margin-right: 1rem;
 `;
 
+export const NameFieldTwo = styled.div`
+  flex: 0 0 calc(50% - 1rem);
+  margin-right: 1rem;
+`;
+
 export const NameFieldOneSpecs = styled.div`
   position: relative;
   margin-bottom: 0.75rem;
@@ -136,4 +141,22 @@ export const NameFieldOneLabel = styled.label`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+`;
+
+export const NameFieldInputWrapper = styled.div`
+  position: relative;
+`;
+
+export const NameFieldInput = styled.input`
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(205, 213, 223);
+  padding-left: 0.6rem;
+  color: rgb(43, 55, 70);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.0125rem;
 `;
