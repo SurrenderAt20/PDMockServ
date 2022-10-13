@@ -24,6 +24,10 @@ import {
   DefaultButton,
   TopWrapper,
   StyledCloseIcon,
+  GenderContainer,
+  GenderFieldInputWrapper,
+  GenderInput,
+  LabelAndInputWrapper,
 } from "./styledModal";
 
 export default function Modal(props: any) {
@@ -80,18 +84,23 @@ export default function Modal(props: any) {
                   </BirthdayFieldInputWrapper>
                 </BirthdayFieldsContainer>
 
-                <NameFields>
-                  <NameFieldOne>
-                    <NameFieldOneSpecs>
-                      <Label>
-                        <span title="gender"> Gender* </span>
-                      </Label>
-                      <NameFieldInputWrapper>
-                        <NameFieldInput type="text"></NameFieldInput>
-                      </NameFieldInputWrapper>
-                    </NameFieldOneSpecs>
-                  </NameFieldOne>
-                </NameFields>
+                <GenderContainer>
+                  <Label>
+                    <span title="gender"> Gender* </span>
+                  </Label>
+                  <br />
+                  <br />
+                  <GenderFieldInputWrapper>
+                    <LabelAndInputWrapper>
+                      <label>Female </label>
+                      <GenderInput type="radio"></GenderInput>
+                    </LabelAndInputWrapper>
+                    <LabelAndInputWrapper>
+                      <label>Male </label>
+                      <GenderInput type="radio"></GenderInput>
+                    </LabelAndInputWrapper>
+                  </GenderFieldInputWrapper>
+                </GenderContainer>
               </StyledFieldsContainer>
             </Group>
           </Form>

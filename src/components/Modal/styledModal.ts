@@ -231,30 +231,29 @@ export const BirthdayFieldInput = styled.input`
   letter-spacing: 0.0125rem;
 `;
 
-
-export const RadioFieldsButtonContainer = styled.div`
+export const GenderContainer = styled.div`
   position: relative;
   margin-bottom: 0.75rem;
-  min-height: 2rem;
+  min-height: 2rem
 `;
 
-export const RadioFieldFieldInputWrapper = styled.div`
-  position: relative;
+export const GenderFieldInputWrapper = styled.div`
+ position: relative;
 `;
 
-export const RadioFieldInput = styled.input`
-  background: rgb(255, 255, 255);
-  width: 100%;
-  height: 1rem;
-  border-radius: 0.25rem;
+export const LabelAndInputWrapper = styled.div`
+  display: flex;
   border: 1px solid rgb(205, 213, 223);
-  padding-left: 0.6rem;
-  color: rgb(43, 55, 70);
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.0125rem;
+  border-radius: 0.25rem;
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 25px;
+  line-height: 0.5rem;
 `;
 
+export const GenderInput = styled.input`
+  width: 10%;
+`;
 
 
