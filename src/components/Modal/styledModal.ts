@@ -97,6 +97,7 @@ export const TopSpecs = styled.div`
 
 export const StyledFieldsContainer = styled.div`
   margin-bottom: 0px;
+  margin-right: 4rem;
   display: block;
 `;
 
@@ -122,7 +123,7 @@ export const NameFieldOneSpecs = styled.div`
   min-height: 2rem;
 `;
 
-export const NameFieldOneLabel = styled.label`
+export const Label = styled.label`
   display: block;
 
   > span {
@@ -148,6 +149,31 @@ export const NameFieldInputWrapper = styled.div`
 `;
 
 export const NameFieldInput = styled.input`
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(205, 213, 223);
+  padding-left: 0.6rem;
+  color: rgb(43, 55, 70);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.0125rem;
+`;
+
+
+export const EmailFieldsContainer = styled.div`
+  position: relative;
+  margin-bottom: 0.75rem;
+  min-height: 2rem;
+`;
+
+export const EmailFieldInputWrapper = styled.div`
+  position: relative;
+`;
+
+export const EmailFieldInput = styled.input`
   background: rgb(255, 255, 255);
   width: 100%;
   height: 2rem;
