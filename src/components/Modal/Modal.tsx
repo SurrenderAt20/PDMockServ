@@ -21,6 +21,9 @@ import {
   BirthdayFieldsContainer,
   BirthdayFieldInputWrapper,
   BirthdayFieldInput,
+  DefaultButton,
+  TopWrapper,
+  StyledCloseIcon,
 } from "./styledModal";
 
 export default function Modal(props: any) {
@@ -31,7 +34,10 @@ export default function Modal(props: any) {
       <ModalContainer>
         <ContentHeader>
           <h4>Create Employee</h4>
-          <AiOutlineClose></AiOutlineClose>
+          <TopWrapper>
+            <DefaultButton>Save</DefaultButton>
+            <StyledCloseIcon></StyledCloseIcon>
+          </TopWrapper>
         </ContentHeader>
         <FormContainer>
           <Form>
@@ -85,16 +91,6 @@ export default function Modal(props: any) {
                       </NameFieldInputWrapper>
                     </NameFieldOneSpecs>
                   </NameFieldOne>
-                  <NameFieldTwo>
-                    <NameFieldOneSpecs>
-                      <Label>
-                        <span title="salary">Confirm</span>
-                      </Label>
-                      <NameFieldInputWrapper>
-                        <NameFieldInput></NameFieldInput>
-                      </NameFieldInputWrapper>
-                    </NameFieldOneSpecs>
-                  </NameFieldTwo>
                 </NameFields>
               </StyledFieldsContainer>
             </Group>

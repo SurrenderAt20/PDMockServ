@@ -24,6 +24,43 @@ export const Container = styled.div`
   }
 `;
 
+export const StyledCloseIcon = styled(AiOutlineClose)`
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: 0px 0px 0px 1.5rem;
+  cursor: pointer;
+`;
+
+export const DefaultButton = styled.div`
+      display: inline-block;
+      background-color: rgb(25, 155, 215);
+      height: 2rem;
+      line-height: 1.9rem;
+      padding: 0px 0.75rem;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: white;
+      cursor: pointer;
+      font-size: 0.857143em;
+      font-weight: 600;
+      position: relative;
+      text-align: center;
+      touch-action: manipulation;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+      -webkit-font-smoothing: antialiased;
+      transition: color 100ms ease-in-out 0s, background-color 100ms ease-in-out 0s, border-color 100ms ease-in-out 0s, box-shadow 100ms ease-in-out 0s;
+`;
+
 export const ModalContainer = styled.div`
   background-color: rgb(240, 242, 245);
   border-radius: 0.5rem;
@@ -45,7 +82,7 @@ export const ContentHeader = styled.div`
   align-items: stretch;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
   transition: box-shadow 0.3s ease 0s;
   flex-shrink: 0;
   z-index: 1;
@@ -143,6 +180,12 @@ export const Label = styled.label`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+`;
+
+export const TopWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 `;
 
 export const NameFieldInputWrapper = styled.div`
