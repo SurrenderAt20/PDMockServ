@@ -82,22 +82,11 @@ export default function NewUserForm(props: any) {
       </TopContainer>
 
       {modal && (
-        <form onSubmit={submitHandler}>
-          <Modal></Modal>
-        </form>
-
-        /*         <ModalContainer>
-          <Overlay>
-            <ModalContent>
-              <HeaderContainer>
-                <h2 className="formHeadline"> Create User </h2>
-                <button className="btn" form="form" type="submit"> Add User </button>
-              </HeaderContainer>
-
-              <form id="form" className="form" onSubmit={submitHandler}>
-                <div className="formHeadline">
-                  <h2>Personal Details</h2>
-                </div>
+        <Modal title="Create Employee" onSave={submitHandler} onClose={() => setModal(false)}>
+          <form id="form" className="form" onSubmit={submitHandler}>
+            <div className="formHeadline">
+              <h2>Personal Details</h2>
+            </div>
                 <div className="wrapper">
                   <div className="new-user__container">
                     <div className="new-user">
@@ -162,15 +151,13 @@ export default function NewUserForm(props: any) {
                     Close
                   </button>
                 </div>
-              </form>
               <div className="error__container">
                 {validationError && validationError !== null && (
                   <p className="error-text">{validationError}</p>
                 )}
               </div>
-            </ModalContent>
-          </Overlay>
-        </ModalContainer> */
+          </form>
+        </Modal>
       )}
     </>
   );
