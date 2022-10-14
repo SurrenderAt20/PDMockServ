@@ -7,10 +7,6 @@ import {
   TopContainer,
   TopElements,
   Button,
-  ModalContainer,
-  Overlay,
-  ModalContent,
-  HeaderContainer,
 } from "../StylingComponents/Form/Form";
 
 export default function NewUserForm(props: any) {
@@ -61,6 +57,8 @@ export default function NewUserForm(props: any) {
 
     if (errors) {
       return;
+    } else {
+      setModal(false)
     }
 
     props.onSaveUserData(userData);
@@ -170,25 +168,10 @@ export default function NewUserForm(props: any) {
                   <label htmlFor="radio-two">Male</label>
                 </div>
               </div>
+            </div>
 
-{/*               <div className="new-user radioBtn">
-                <label htmlFor="radio-two">Male</label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  checked={enteredGender == "male"}
-                  onChange={genderChangeHandler}
-                />
-                <label>Female</label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  checked={enteredGender == "female"}
-                  onChange={genderChangeHandler}
-                />
-              </div> */}
+            <div className="error__container">
+
             </div>
 
             <div className="error__container">
