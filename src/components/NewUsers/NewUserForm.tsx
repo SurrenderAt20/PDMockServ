@@ -82,80 +82,120 @@ export default function NewUserForm(props: any) {
       </TopContainer>
 
       {modal && (
-        <Modal title="Create Employee" onSave={submitHandler} onClose={() => setModal(false)}>
-          <form id="form" className="form" onSubmit={submitHandler}>
+        <Modal
+          title="Create Employee"
+          onSave={submitHandler}
+          onClose={() => setModal(false)}
+        >
+          <form id="form" onSubmit={submitHandler}>
             <div className="formHeadline">
               <h2>Personal Details</h2>
             </div>
-                <div className="wrapper">
-                  <div className="new-user__container">
-                    <div className="new-user">
-                      <label className="nameLabel">Name</label>
-                      <br />
+
+            <div className="userContainer">
+              <div className="firstLayerContainer">
+                <div className="firstLayerField">
+                  <div className="nameFieldSpecs">
+                    <label className="formLabel">
+                      <span> Name </span>
+                    </label>
+                    <div className="firstLayerInputWrapper">
                       <input
-                        className="nameInput"
+                        className="nameFieldInput"
                         type="text"
                         onChange={nameChangeHandler}
                         value={enteredName}
                       />
                     </div>
-                    <div className="new-user">
-                      <label className="bdayLabel">Birthday</label>
-                      <br />
+                  </div>
+                </div>
+
+                <div className="firstLayerField">
+                  <div className="nameFieldSpecs">
+                    <label className="formLabel">
+                      <span>Birthday</span>
+                    </label>
+                    <div className="firstLayerInputWrapper">
                       <input
-                        className="bdayInput"
+                        className="nameFieldInput"
                         type="date"
                         min="2022-06-09"
                         onChange={birthdayChangeHandler}
                         value={enteredBirthday}
                       />
                     </div>
-                    <div className="new-user">
-                      <label className="salaryLabel">Salary</label>
-                      <br />
-                      <input
-                        className="salaryInput"
-                        type="number"
-                        min={0}
-                        onChange={salaryChangeHandler}
-                        value={enteredSalary}
-                      />
-                    </div>
-                    <div className="new-user radioBtn">
-                      <label>Male</label>
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        checked={enteredGender == "male"}
-                        onChange={genderChangeHandler}
-                      />
-                      <label>Female</label>
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        checked={enteredGender == "female"}
-                        onChange={genderChangeHandler}
-                      />
-                    </div>
                   </div>
                 </div>
-                <div className="submit-btn__container">
-                  <button
-                    name="btn"
-                    id="btn"
-                    className="btn"
-                    onClick={toggleModal}
-                  >
-                    Close
-                  </button>
-                </div>
-              <div className="error__container">
-                {validationError && validationError !== null && (
-                  <p className="error-text">{validationError}</p>
-                )}
               </div>
+
+              <div className="firstLayerField">
+                <div className="nameFieldSpecs">
+                  <label className="formLabel">
+                    <span>Salary</span>
+                  </label>
+                  <input
+                    className="nameFieldInput"
+                    type="number"
+                    min={0}
+                    onChange={salaryChangeHandler}
+                    value={enteredSalary}
+                  />
+                </div>
+              </div>
+
+              <div className="nameFieldSpecs">
+                <label htmlFor="" className="formLabel">
+                  <span>Gender</span>
+                  <br />
+                  <br />
+                </label>
+                <div className="switch-field">
+                  <input
+                    type="radio"
+                    id="radio-one"
+                    name="gender"
+                    value="female"
+                    checked={enteredGender == "female"}
+                    onChange={genderChangeHandler}
+                  />
+                  <label htmlFor="radio-one">Female</label>
+                  <input
+                    type="radio"
+                    id="radio-two"
+                    name="gender"
+                    value="male"
+                    checked={enteredGender == "male"}
+                    onChange={genderChangeHandler}
+                  />
+                  <label htmlFor="radio-two">Male</label>
+                </div>
+              </div>
+
+{/*               <div className="new-user radioBtn">
+                <label htmlFor="radio-two">Male</label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={enteredGender == "male"}
+                  onChange={genderChangeHandler}
+                />
+                <label>Female</label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={enteredGender == "female"}
+                  onChange={genderChangeHandler}
+                />
+              </div> */}
+            </div>
+
+            <div className="error__container">
+              {validationError && validationError !== null && (
+                <p className="error-text">{validationError}</p>
+              )}
+            </div>
           </form>
         </Modal>
       )}

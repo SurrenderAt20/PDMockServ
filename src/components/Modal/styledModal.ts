@@ -79,10 +79,10 @@ export const ContentHeader = styled.div`
   border-top-right-radius: 0.5rem;
   display: flex;
   -webkit-box-align: stretch;
-  align-items: stretch;
+  align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1.5rem;
   transition: box-shadow 0.3s ease 0s;
   flex-shrink: 0;
   z-index: 1;
@@ -102,7 +102,7 @@ export const FormContainer = styled.div`
 export const Form = styled.div`
   padding: 1rem 0px;
   margin: 0px auto;
-  max-width: 44rem;
+  max-width: 55rem;
 `;
 
 export const Group = styled.div`
@@ -195,6 +195,7 @@ export const NameFieldInputWrapper = styled.div`
 export const NameFieldInput = styled.input`
   background: rgb(255, 255, 255);
   width: 100%;
+  padding: 1rem;
   height: 2rem;
   border-radius: 0.25rem;
   border: 1px solid rgb(205, 213, 223);
