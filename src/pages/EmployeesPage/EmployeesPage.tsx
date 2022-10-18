@@ -75,7 +75,7 @@ const EmployeesPage = () => {
         a[columnName].toLowerCase() > b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
-      setHeadline(!headline)
+      setHeadline(!headline);
       setOrder("DescendingOrder");
     }
 
@@ -85,7 +85,7 @@ const EmployeesPage = () => {
         a[columnName].toLowerCase() < b[columnName].toLowerCase() ? 1 : -1
       );
       setUsers(sorted);
-      setHeadline(!headline)
+      setHeadline(!headline);
       setOrder("AscendingOrder");
     }
   };
@@ -95,7 +95,6 @@ const EmployeesPage = () => {
       return [user, ...prevUsers];
     });
   };
-
 
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));

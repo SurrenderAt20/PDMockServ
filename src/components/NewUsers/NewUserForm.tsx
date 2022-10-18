@@ -3,11 +3,16 @@ import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import Modal from "../Modal/Modal";
 import "./NewUserForm.css";
+import { ConvertedEmployee } from "ts/interfaces";
 import {
   TopContainer,
   TopElements,
   Button,
 } from "../StylingComponents/Form/Form";
+
+interface Props {
+  editUser?: ConvertedEmployee;
+}
 
 export default function NewUserForm(props: any) {
   const [modal, setModal] = useState(false);
@@ -58,7 +63,7 @@ export default function NewUserForm(props: any) {
     if (errors) {
       return;
     } else {
-      setModal(false)
+      setModal(false);
     }
 
     props.onSaveUserData(userData);
@@ -75,6 +80,9 @@ export default function NewUserForm(props: any) {
           <h2> Registered users </h2>
           <Button className="btn" onClick={toggleModal}>
             <div>Create user</div>
+          </Button>
+          <Button className="btn" onClick={toggleModal}>
+            <div>Edit user</div>
           </Button>
         </TopElements>
       </TopContainer>
@@ -170,9 +178,7 @@ export default function NewUserForm(props: any) {
               </div>
             </div>
 
-            <div className="error__container">
-
-            </div>
+            <div className="error__container"></div>
 
             <div className="error__container">
               {validationError && validationError !== null && (
