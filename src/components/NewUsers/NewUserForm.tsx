@@ -30,14 +30,14 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     fullName: editUser?.fullName ?? "",
     birthday: editUser?.birthday ?? "",
     salary: editUser?.salary ?? 0,
-    enteredGender: editUser?.gender ?? "male",
+    gender: editUser?.gender ?? "male",
     id: editUser?.id ?? Math.random(),
   });
 
   //Stores value in state
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredName: event.target.value };
+      return { ...prevState, fullName: event.target.value };
     });
   };
 
@@ -45,17 +45,21 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredBirthday: event.target.value };
+      return { ...prevState, birthday: event.target.value };
     });
   };
 
   const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSalary(Number(event.target.value));
+    setUserInput((prevState) => {
+      return { ...prevState, salary: Number(event.target.value) };
+    });
   };
+
+  /* setSalary(Number(event.target.value)); */
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredGender: event.target.value as Gender };
+      return { ...prevState, gender: event.target.value as Gender };
     });
   };
 
@@ -156,7 +160,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 id="radio-one"
                 name="gender"
                 value="female"
-                checked={userInput.enteredGender == "female"}
+                checked={userInput.gender == "female"}
                 onChange={genderChangeHandler}
               />
               <label htmlFor="radio-one">Female</label>
@@ -165,7 +169,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 id="radio-two"
                 name="gender"
                 value="male"
-                checked={userInput.enteredGender == "male"}
+                checked={userInput.gender == "male"}
                 onChange={genderChangeHandler}
               />
               <label htmlFor="radio-two">Male</label>
