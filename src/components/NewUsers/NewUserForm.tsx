@@ -18,12 +18,6 @@ interface Props {
 
 export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   const [modal, setModal] = useState(false);
-  /*   const [enteredName, setEnteredName] = useState(editUser?.fullName ?? "");
-  const [enteredBirthday, setBirthday] = useState(editUser?.birthday ?? "");
-  const [enteredSalary, setSalary] = useState<number>(editUser?.salary ?? 0);
-  const [enteredGender, setGender] = useState<Gender>(
-    editUser?.gender ?? "male"
-  ); */
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const [userInput, setUserInput] = useState({
@@ -55,8 +49,6 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     });
   };
 
-  /* setSalary(Number(event.target.value)); */
-
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
       return { ...prevState, gender: event.target.value as Gender };
@@ -65,14 +57,6 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    /*     const userData = {
-      fullName: enteredName,
-      birthday: enteredBirthday,
-      salary: enteredSalary,
-      gender: enteredGender,
-      id: editUser?.id ?? Math.random(),
-    }; */
 
     const errors = validateForm(userInput);
     setValidationError(errors);
