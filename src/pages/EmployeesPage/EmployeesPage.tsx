@@ -2,6 +2,7 @@ import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
+import NewUserForm from "components/NewUsers/NewUserForm";
 import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
@@ -13,6 +14,11 @@ import {
   Headline,
   IconContainer,
 } from "components/StylingComponents/EmployeesPage/EmployeesPage";
+import {
+  TopContainer,
+  TopElements,
+  Button,
+} from "components/StylingComponents/Form/Form";
 
 const EmployeesPage = () => {
   const [headline, setHeadline] = useState(false);
@@ -21,6 +27,8 @@ const EmployeesPage = () => {
   const [genderFilter, setGenderFilter] = useState<
     GenderFilterOption | undefined
   >();
+  const [modal, setModal] = useState(false);
+  /* const [editModal, setEditModal] = useState(false); */
   const [order, setOrder] = useState("AscendingOrder");
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
 
@@ -47,6 +55,14 @@ const EmployeesPage = () => {
   useEffect(() => {
     setFilteredUser(data);
   }, []);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  /*   const toggleEditModal = () => {
+    setEditModal(!editModal);
+  }; */
 
   useEffect(() => {
     const formatData = window.localStorage.getItem("cardFormatStorage");
@@ -108,6 +124,20 @@ const EmployeesPage = () => {
 
   return (
     <section>
+      <TopContainer>
+        <TopElements className="top-elements">
+          <h2> Registered users </h2>
+          <Button className="btn" onClick={toggleModal}>
+            <div>Create user</div>
+          </Button>
+          {/*           <Button className="btn" onClick={toggleEditModal}>
+            <div>Edit user</div>
+          </Button> */}
+        </TopElements>
+      </TopContainer>
+
+      {modal && <NewUserForm />}
+
       <NewUser onAddUser={addUserHandler} />
 
       {isLoading && <div className="loadingData"> Loading data... </div>}
