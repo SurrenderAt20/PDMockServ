@@ -31,6 +31,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     enteredBirthday: editUser?.birthday ?? "",
     enteredSalary: editUser?.salary ?? 0,
     enteredGender: editUser?.gender ?? "male",
+    id: editUser?.id ?? Math.random(),
   });
 
   //Stores value in state
@@ -43,9 +44,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   const birthdayChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setUserInput({
-      ...userInput,
-      enteredBirthday: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredBirthday: event.target.value };
     });
   };
 
@@ -54,9 +54,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   };
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({
-      ...userInput,
-      enteredGender: event.target.value as Gender,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredGender: event.target.value as Gender };
     });
   };
 
@@ -107,7 +106,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                     className="nameFieldInput"
                     type="text"
                     onChange={nameChangeHandler}
-                    value={enteredName}
+                    value={userInput.enteredName}
                   />
                 </div>
               </div>
@@ -124,7 +123,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                     type="date"
                     min="2022-06-09"
                     onChange={birthdayChangeHandler}
-                    value={enteredBirthday}
+                    value={userInput.enteredBirthday}
                   />
                 </div>
               </div>
@@ -158,7 +157,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 id="radio-one"
                 name="gender"
                 value="female"
-                checked={enteredGender == "female"}
+                checked={userInput.enteredGender == "female"}
                 onChange={genderChangeHandler}
               />
               <label htmlFor="radio-one">Female</label>
@@ -167,7 +166,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 id="radio-two"
                 name="gender"
                 value="male"
-                checked={enteredGender == "male"}
+                checked={userInput.enteredGender == "male"}
                 onChange={genderChangeHandler}
               />
               <label htmlFor="radio-two">Male</label>
