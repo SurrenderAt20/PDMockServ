@@ -35,25 +35,29 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
 
   //Stores value in state
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({
-      ...userInput,
-      enteredName: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredName: event.target.value };
     });
   };
 
   const birthdayChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setBirthday(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredBirthday: event.target.value,
+    });
   };
 
   const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSalary(Number(event.target.value));
-    console.log(event.target.value);
   };
 
   const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGender(event.target.value as Gender);
+    setUserInput({
+      ...userInput,
+      enteredGender: event.target.value as Gender,
+    });
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
