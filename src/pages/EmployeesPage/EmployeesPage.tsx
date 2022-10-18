@@ -108,6 +108,15 @@ const EmployeesPage = () => {
 
   return (
     <section>
+      <TopContainer>
+        <TopElements className="top-elements">
+          <h2> Registered users </h2>
+          <Button className="btn" onClick={toggleModal}>
+            <div>Create user</div>
+          </Button>
+        </TopElements>
+      </TopContainer>
+
       <NewUser onAddUser={addUserHandler} />
 
       {isLoading && <div className="loadingData"> Loading data... </div>}

@@ -14,9 +14,8 @@ interface Props {
   editUser?: ConvertedEmployee;
 }
 
-export default function NewUserForm(props: any) {
+export default function NewUserForm({ editedUser }: Props) {
   const [modal, setModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
   const [enteredName, setEnteredName] = useState("");
   const [enteredBirthday, setBirthday] = useState("");
   const [enteredSalary, setSalary] = useState<number>(0);
@@ -77,14 +76,14 @@ export default function NewUserForm(props: any) {
 
   return (
     <>
-      <TopContainer>
+      {/*       <TopContainer>
         <TopElements className="top-elements">
           <h2> Registered users </h2>
           <Button className="btn" onClick={toggleModal}>
             <div>Create user</div>
           </Button>
         </TopElements>
-      </TopContainer>
+      </TopContainer> */}
 
       {modal && (
         <Modal

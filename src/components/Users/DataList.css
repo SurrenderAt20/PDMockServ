@@ -52,7 +52,7 @@
     display: grid;
     position: relative;
     gap: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
