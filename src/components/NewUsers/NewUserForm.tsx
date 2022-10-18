@@ -27,9 +27,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const [userInput, setUserInput] = useState({
-    enteredName: editUser?.fullName ?? "",
-    enteredBirthday: editUser?.birthday ?? "",
-    enteredSalary: editUser?.salary ?? 0,
+    fullName: editUser?.fullName ?? "",
+    birthday: editUser?.birthday ?? "",
+    salary: editUser?.salary ?? 0,
     enteredGender: editUser?.gender ?? "male",
     id: editUser?.id ?? Math.random(),
   });
@@ -62,16 +62,15 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const userData = {
+    /*     const userData = {
       fullName: enteredName,
       birthday: enteredBirthday,
       salary: enteredSalary,
       gender: enteredGender,
-      // TODO: Revisit
       id: editUser?.id ?? Math.random(),
-    };
+    }; */
 
-    const errors = validateForm(userData);
+    const errors = validateForm(userInput);
     setValidationError(errors);
     console.log(errors);
 
@@ -81,7 +80,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
       setModal(false);
     }
 
-    onSave(userData);
+    onSave(userInput);
     onClose();
   };
 
@@ -106,7 +105,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                     className="nameFieldInput"
                     type="text"
                     onChange={nameChangeHandler}
-                    value={userInput.enteredName}
+                    value={userInput.fullName}
                   />
                 </div>
               </div>
@@ -123,7 +122,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                     type="date"
                     min="2022-06-09"
                     onChange={birthdayChangeHandler}
-                    value={userInput.enteredBirthday}
+                    value={userInput.birthday}
                   />
                 </div>
               </div>
@@ -140,7 +139,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 type="number"
                 min={0}
                 onChange={salaryChangeHandler}
-                value={enteredSalary}
+                value={userInput.salary}
               />
             </div>
           </div>
