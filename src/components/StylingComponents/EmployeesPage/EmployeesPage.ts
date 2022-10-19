@@ -13,7 +13,7 @@ const IconContainer = styled.div`
     display: flex
 `;
     
-const GridIconOne = styled(Grid3x3GapFill) <{isActive: boolean}>`
+const GridIconOne = styled(Grid3x3GapFill)<{isActive: boolean}>`
     display: flex;
     align-items: center;
     margin: 25px;
@@ -32,9 +32,5 @@ const GridIconTwo = styled(List) <{isActive: boolean}>`
 const Headline = styled.h4 <{isActiveHeadline: boolean}>`
     font-weight: ${props => props.isActiveHeadline ? 'bold' : 'normal'}
 `;
-
-
-
-
 
 export {FilterGrid, GridIconOne, GridIconTwo, IconContainer, Headline}
