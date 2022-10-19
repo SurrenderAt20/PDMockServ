@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function NewUserForm({ editUser, onClose, onSave }: Props) {
-  const [modal, setModal] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
 
   //oneState rather than multiple. 
@@ -39,19 +38,15 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     })
   }
 
-  
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const errors = validateForm(userInput);
     setValidationError(errors);
-    console.log(errors);
 
     if (errors) {
-      return;
-    } else {
-      setModal(false);
+      (Object.keys(errors).length !== 0) 
     }
 
     onSave(userInput);
@@ -82,6 +77,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                     onChange={changeHandler}
                     value={userInput.fullName}
                   />
+
+
+                  {validationError!.fullName && <h1>{validationError!.fullName}</h1>}
                 </div>
               </div>
             </div>
