@@ -20,6 +20,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
   const [modal, setModal] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
 
+  //oneState rather than multiple. 
   const [userInput, setUserInput] = useState({
     fullName: editUser?.fullName ?? "",
     birthday: editUser?.birthday ?? "",
@@ -28,32 +29,17 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     id: editUser?.id ?? Math.random(),
   });
 
-  //Stores value in state
-  const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //Collecting all handlers into one
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
-      return { ...prevState, fullName: event.target.value };
-    });
-  };
+      const inputValue = event.target.value;
+      const inputName = event.target.name;
 
-  const birthdayChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setUserInput((prevState) => {
-      return { ...prevState, birthday: event.target.value };
-    });
-  };
+      return { ...prevState, [inputName]: inputValue };
+    })
+  }
 
-  const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput((prevState) => {
-      return { ...prevState, salary: Number(event.target.value) };
-    });
-  };
-
-  const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput((prevState) => {
-      return { ...prevState, gender: event.target.value as Gender };
-    });
-  };
+  
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -92,7 +78,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                   <input
                     className="nameFieldInput"
                     type="text"
-                    onChange={nameChangeHandler}
+                    name="fullName"
+                    onChange={changeHandler}
                     value={userInput.fullName}
                   />
                 </div>
@@ -108,8 +95,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                   <input
                     className="nameFieldInput"
                     type="date"
+                    name="birthday"
                     min="2022-06-09"
-                    onChange={birthdayChangeHandler}
+                    onChange={changeHandler}
                     value={userInput.birthday}
                   />
                 </div>
@@ -125,8 +113,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
               <input
                 className="nameFieldInput"
                 type="number"
+                name="salary"
                 min={0}
-                onChange={salaryChangeHandler}
+                onChange={changeHandler}
                 value={userInput.salary}
               />
             </div>
@@ -145,7 +134,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 name="gender"
                 value="female"
                 checked={userInput.gender == "female"}
-                onChange={genderChangeHandler}
+                onChange={changeHandler}
               />
               <label htmlFor="radio-one">Female</label>
               <input
@@ -154,7 +143,7 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 name="gender"
                 value="male"
                 checked={userInput.gender == "male"}
-                onChange={genderChangeHandler}
+                onChange={changeHandler}
               />
               <label htmlFor="radio-two">Male</label>
             </div>
