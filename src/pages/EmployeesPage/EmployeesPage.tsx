@@ -104,9 +104,9 @@ const EmployeesPage = () => {
           (prevUser) => prevUser.id !== user.id
         );
 
-        return [user, ...filteredUsers];
+        return [user, ...filteredUsers.sort()];
       } else {
-        return [user, ...prevUsers];
+        return [user, ...prevUsers.sort()];
       }
     });
     setSelectedUser(undefined);

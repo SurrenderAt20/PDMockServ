@@ -1,7 +1,8 @@
 import { ConvertedEmployee } from "ts/interfaces";
+import { ValidationErrors } from "./NewUserForm";
 
 export const validateForm = (data: ConvertedEmployee) => {
-  const errors: any = {};
+  const errors: ValidationErrors = {};
 
   if (data.fullName.trim() == "") {
     errors.fullName = "There was a name error";
@@ -29,5 +30,5 @@ export const validateForm = (data: ConvertedEmployee) => {
     errors.salary = "You must provide a salary for your employee!";
   }
 
-  return "";
+  return errors;
 };

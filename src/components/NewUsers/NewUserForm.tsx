@@ -16,10 +16,19 @@ interface Props {
   onSave: (data: any) => void;
 }
 
-export default function NewUserForm({ editUser, onClose, onSave }: Props) {
-  const [validationError, setValidationError] = useState<string | null>(null);
+export type ValidationErrors = {
+  fullName?: string;
+  birthday?: string;
+  salary?: string;
+  gender?: string;
+};
 
-  //oneState rather than multiple. 
+/* type ValidationErrors = Partial<Record<keyof Omit<ConvertedEmployee, 'id'>, string>>; */
+
+export default function NewUserForm({ editUser, onClose, onSave }: Props) {
+  const [validationError, setValidationError] = useState<ValidationErrors>({});
+
+  //oneState rather than multiple.
   const [userInput, setUserInput] = useState({
     fullName: editUser?.fullName ?? "",
     birthday: editUser?.birthday ?? "",
@@ -35,9 +44,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
       const inputName = event.target.name;
 
       return { ...prevState, [inputName]: inputValue };
-    })
-  }
-
+    });
+  };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,8 +53,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     const errors = validateForm(userInput);
     setValidationError(errors);
 
-    if (errors) {
-      (Object.keys(errors).length !== 0) 
+    if (Object.keys(errors).length !== 0) {
+      return;
     }
 
     onSave(userInput);
@@ -71,15 +79,16 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 </label>
                 <div className="firstLayerInputWrapper">
                   <input
-                    className="nameFieldInput"
+                    className={validationError.fullName ? 'nameFieldInputError' : 'nameFieldInput'}
                     type="text"
                     name="fullName"
                     onChange={changeHandler}
                     value={userInput.fullName}
                   />
 
-
-                  {validationError!.fullName && <h1>{validationError!.fullName}</h1>}
+                  {validationError.fullName && (
+                    <h1 className="errorMsg">{validationError.fullName}</h1>
+                  )}
                 </div>
               </div>
             </div>
@@ -91,13 +100,17 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 </label>
                 <div className="firstLayerInputWrapper">
                   <input
-                    className="nameFieldInput"
+                    className={validationError.birthday ? 'nameFieldInputError' : 'nameFieldInput'}
                     type="date"
                     name="birthday"
                     min="2022-06-09"
                     onChange={changeHandler}
                     value={userInput.birthday}
                   />
+
+                  {validationError.birthday && (
+                    <h1 className="errorMsg">{validationError.birthday}</h1>
+                  )}
                 </div>
               </div>
             </div>
@@ -109,13 +122,15 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 <span>Salary</span>
               </label>
               <input
-                className="nameFieldInput"
+                className={validationError.salary ? 'nameFieldInputError' : 'nameFieldInput'}
                 type="number"
                 name="salary"
                 min={0}
                 onChange={changeHandler}
                 value={userInput.salary}
               />
+
+              {validationError.salary && <h1 className="errorMsg">{validationError.salary}</h1>}
             </div>
           </div>
 
@@ -134,6 +149,8 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 checked={userInput.gender == "female"}
                 onChange={changeHandler}
               />
+
+              {validationError.gender && <h1 className="errorMsg">{validationError.gender}</h1>}
               <label htmlFor="radio-one">Female</label>
               <input
                 type="radio"
@@ -146,14 +163,6 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
               <label htmlFor="radio-two">Male</label>
             </div>
           </div>
-        </div>
-
-        <div className="error__container"></div>
-
-        <div className="error__container">
-          {validationError && validationError !== null && (
-            <p className="error-text">{validationError}</p>
-          )}
         </div>
       </form>
     </Modal>

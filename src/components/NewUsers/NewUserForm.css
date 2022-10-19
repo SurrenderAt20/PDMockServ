@@ -76,6 +76,20 @@ span {
     letter-spacing: 0.0125rem;
 }
 
+.nameFieldInputError {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.25rem;
+  border: 1px solid red;
+  padding-left: 0.6rem;
+  color: rgb(43, 55, 70);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.0125rem;
+}
+
 .switch-field {
 	display: flex;
 	margin-bottom: 36px;
@@ -164,19 +178,10 @@ span {
   padding-right: 5px;
 }
 
-.error__container {
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
-}
-
-.error-text {
-  color: red;
-  background-color: #fff;
-  border: 1px solid #e4e4e4;
-  padding: 2rem;
-  border-radius: 10px;
+.errorMsg {
+  font-size: 18px;
   font-weight: bold;
+  padding-top: 15px;
 }
 
 @media only screen and (max-width: 1300px) {
