@@ -12,182 +12,159 @@ import {
 
 interface Props {
   editUser?: ConvertedEmployee;
+  onClose: () => void;
+  onSave: (data: any) => void;
 }
 
-export default function NewUserForm(props: any) {
-  const [modal, setModal] = useState(false);
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredBirthday, setBirthday] = useState("");
-  const [enteredSalary, setSalary] = useState<number>(0);
-  const [enteredGender, setGender] = useState<Gender>("male");
-  const [validationError, setValidationError] = useState<string | null>(null);
+export type ValidationErrors = {
+  fullName?: string;
+  birthday?: string;
+  salary?: string;
+  gender?: string;
+};
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
+/* type ValidationErrors = Partial<Record<keyof Omit<ConvertedEmployee, 'id'>, string>>; */
 
-  //Stores value in state
-  const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredName(event.target.value);
-  };
+export default function NewUserForm({ editUser, onClose, onSave }: Props) {
+  const [validationError, setValidationError] = useState<ValidationErrors>({});
 
-  const birthdayChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setBirthday(event.target.value);
-  };
+  //oneState rather than multiple.
+  const [userInput, setUserInput] = useState({
+    fullName: editUser?.fullName ?? "",
+    birthday: editUser?.birthday ?? "",
+    salary: editUser?.salary ?? 0,
+    gender: editUser?.gender ?? "male",
+    id: editUser?.id ?? Math.random(),
+  });
 
-  const salaryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSalary(Number(event.target.value));
-    console.log(event.target.value);
-  };
+  //Collecting all handlers into one
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInput((prevState) => {
+      const inputValue = event.target.value;
+      const inputName = event.target.name;
 
-  const genderChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGender(event.target.value as Gender);
+      return { ...prevState, [inputName]: inputValue };
+    });
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const userData = {
-      fullName: enteredName,
-      birthday: enteredBirthday,
-      salary: enteredSalary,
-      gender: enteredGender,
-    };
-
-    const errors = validateForm(userData);
+    const errors = validateForm(userInput);
     setValidationError(errors);
-    console.log(errors);
 
-    if (errors) {
+    if (Object.keys(errors).length !== 0) {
       return;
-    } else {
-      setModal(false);
     }
 
-    props.onSaveUserData(userData);
-    setEnteredName("");
-    setBirthday("");
-    setSalary(0);
-    setGender("male" && "female");
+    onSave(userInput);
+    onClose();
   };
 
+  const modalTitle = editUser ? `Edit User` : "Create User";
+
   return (
-    <>
-      <TopContainer>
-        <TopElements className="top-elements">
-          <h2> Registered users </h2>
-          <Button className="btn" onClick={toggleModal}>
-            <div>Create user</div>
-          </Button>
-          <Button className="btn" onClick={toggleModal}>
-            <div>Edit user</div>
-          </Button>
-        </TopElements>
-      </TopContainer>
+    <Modal title={modalTitle} onSave={submitHandler} onClose={onClose}>
+      <form id="form" onSubmit={submitHandler}>
+        <div className="formHeadline">
+          <h2>Personal Details</h2>
+        </div>
 
-      {modal && (
-        <Modal
-          title="Create Employee"
-          onSave={submitHandler}
-          onClose={() => setModal(false)}
-        >
-          <form id="form" onSubmit={submitHandler}>
-            <div className="formHeadline">
-              <h2>Personal Details</h2>
-            </div>
-
-            <div className="userContainer">
-              <div className="firstLayerContainer">
-                <div className="firstLayerField">
-                  <div className="nameFieldSpecs">
-                    <label className="formLabel">
-                      <span> Name </span>
-                    </label>
-                    <div className="firstLayerInputWrapper">
-                      <input
-                        className="nameFieldInput"
-                        type="text"
-                        onChange={nameChangeHandler}
-                        value={enteredName}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="firstLayerField">
-                  <div className="nameFieldSpecs">
-                    <label className="formLabel">
-                      <span>Birthday</span>
-                    </label>
-                    <div className="firstLayerInputWrapper">
-                      <input
-                        className="nameFieldInput"
-                        type="date"
-                        min="2022-06-09"
-                        onChange={birthdayChangeHandler}
-                        value={enteredBirthday}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="firstLayerField">
-                <div className="nameFieldSpecs">
-                  <label className="formLabel">
-                    <span>Salary</span>
-                  </label>
-                  <input
-                    className="nameFieldInput"
-                    type="number"
-                    min={0}
-                    onChange={salaryChangeHandler}
-                    value={enteredSalary}
-                  />
-                </div>
-              </div>
-
+        <div className="userContainer">
+          <div className="firstLayerContainer">
+            <div className="firstLayerField">
               <div className="nameFieldSpecs">
-                <label htmlFor="" className="formLabel">
-                  <span>Gender</span>
-                  <br />
-                  <br />
+                <label className="formLabel">
+                  <span> Name </span>
                 </label>
-                <div className="switch-field">
+                <div className="firstLayerInputWrapper">
                   <input
-                    type="radio"
-                    id="radio-one"
-                    name="gender"
-                    value="female"
-                    checked={enteredGender == "female"}
-                    onChange={genderChangeHandler}
+                    className={validationError.fullName ? 'nameFieldInputError' : 'nameFieldInput'}
+                    type="text"
+                    name="fullName"
+                    onChange={changeHandler}
+                    value={userInput.fullName}
                   />
-                  <label htmlFor="radio-one">Female</label>
-                  <input
-                    type="radio"
-                    id="radio-two"
-                    name="gender"
-                    value="male"
-                    checked={enteredGender == "male"}
-                    onChange={genderChangeHandler}
-                  />
-                  <label htmlFor="radio-two">Male</label>
+
+                  {validationError.fullName && (
+                    <h1 className="errorMsg">{validationError.fullName}</h1>
+                  )}
                 </div>
               </div>
             </div>
 
-            <div className="error__container"></div>
+            <div className="firstLayerField">
+              <div className="nameFieldSpecs">
+                <label className="formLabel">
+                  <span>Birthday</span>
+                </label>
+                <div className="firstLayerInputWrapper">
+                  <input
+                    className={validationError.birthday ? 'nameFieldInputError' : 'nameFieldInput'}
+                    type="date"
+                    name="birthday"
+                    min="2022-06-09"
+                    onChange={changeHandler}
+                    value={userInput.birthday}
+                  />
 
-            <div className="error__container">
-              {validationError && validationError !== null && (
-                <p className="error-text">{validationError}</p>
-              )}
+                  {validationError.birthday && (
+                    <h1 className="errorMsg">{validationError.birthday}</h1>
+                  )}
+                </div>
+              </div>
             </div>
-          </form>
-        </Modal>
-      )}
-    </>
+          </div>
+
+          <div className="firstLayerField">
+            <div className="nameFieldSpecs">
+              <label className="formLabel">
+                <span>Salary</span>
+              </label>
+              <input
+                className={validationError.salary ? 'nameFieldInputError' : 'nameFieldInput'}
+                type="number"
+                name="salary"
+                min={0}
+                onChange={changeHandler}
+                value={userInput.salary}
+              />
+
+              {validationError.salary && <h1 className="errorMsg">{validationError.salary}</h1>}
+            </div>
+          </div>
+
+          <div className="nameFieldSpecs">
+            <label htmlFor="" className="formLabel">
+              <span>Gender</span>
+              <br />
+              <br />
+            </label>
+            <div className="switch-field">
+              <input
+                type="radio"
+                id="radio-one"
+                name="gender"
+                value="female"
+                checked={userInput.gender == "female"}
+                onChange={changeHandler}
+              />
+
+              {validationError.gender && <h1 className="errorMsg">{validationError.gender}</h1>}
+              <label htmlFor="radio-one">Female</label>
+              <input
+                type="radio"
+                id="radio-two"
+                name="gender"
+                value="male"
+                checked={userInput.gender == "male"}
+                onChange={changeHandler}
+              />
+              <label htmlFor="radio-two">Male</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </Modal>
   );
 }

@@ -1,4 +1,3 @@
-import NewUser from "components/NewUsers/NewUser";
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
@@ -13,8 +12,15 @@ import {
   Headline,
   IconContainer,
 } from "components/StylingComponents/EmployeesPage/EmployeesPage";
+import {
+  TopContainer,
+  TopElements,
+  Button,
+} from "components/StylingComponents/Form/Form";
+import NewUserForm from "components/NewUsers/NewUserForm";
 
 const EmployeesPage = () => {
+  const [showFormModal, setShowFormModal] = useState(false);
   const [headline, setHeadline] = useState(false);
   const [cards, setCards] = useState(false);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
@@ -23,6 +29,7 @@ const EmployeesPage = () => {
   >();
   const [order, setOrder] = useState("AscendingOrder");
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
+  const [selectedUser, setSelectedUser] = useState<ConvertedEmployee>();
 
   const {
     data,
@@ -90,10 +97,19 @@ const EmployeesPage = () => {
     }
   };
 
-  const addUserHandler = (user: ConvertedEmployee) => {
+  const saveHandler = (user: ConvertedEmployee) => {
     setUsers((prevUsers: ConvertedEmployee[]) => {
-      return [user, ...prevUsers];
+      if (selectedUser) {
+        const filteredUsers = prevUsers.filter(
+          (prevUser) => prevUser.id !== user.id
+        );
+
+        return [user, ...filteredUsers.sort()];
+      } else {
+        return [user, ...prevUsers.sort()];
+      }
     });
+    setSelectedUser(undefined);
   };
 
   const toggleCards = () => {
@@ -106,9 +122,29 @@ const EmployeesPage = () => {
     return <div className="empty">There is no available data to fetch</div>;
   }
 
+  const handleEditClick = (user: ConvertedEmployee) => {
+    setSelectedUser(user);
+    setShowFormModal(true);
+  };
+
   return (
     <section>
-      <NewUser onAddUser={addUserHandler} />
+      <TopContainer>
+        <TopElements className="top-elements">
+          <h2> Registered users </h2>
+          <Button className="btn" onClick={() => setShowFormModal(true)}>
+            <div>Create user</div>
+          </Button>
+        </TopElements>
+      </TopContainer>
+
+      {showFormModal && (
+        <NewUserForm
+          onClose={() => setShowFormModal(false)}
+          onSave={saveHandler}
+          editUser={selectedUser}
+        />
+      )}
 
       {isLoading && <div className="loadingData"> Loading data... </div>}
       {isError && <div className="errorMessage">Could not fetch data</div>}
@@ -153,7 +189,10 @@ const EmployeesPage = () => {
                 <h4 onClick={() => sort("gender")}>Gender</h4>
               </div>
 
-              <DataList userData={filteredUsers} />
+              <DataList
+                onEditClick={handleEditClick}
+                userData={filteredUsers}
+              />
             </section>
           )}
         </section>

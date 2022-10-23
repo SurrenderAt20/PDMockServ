@@ -19,12 +19,13 @@ export interface EmployeeFilter {
 }
 
 export interface ConvertedEmployee  {
-    id?: number;
+    id: number;
     fullName: Name;
     birthday: string;
     salary: number;
     gender?: Gender;
 }
+
 export interface UseFetchDataParams {
     endpoint: string;
 }
