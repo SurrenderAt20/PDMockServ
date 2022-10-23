@@ -73,7 +73,7 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
-  const sort = (columnName: keyof Omit<ConvertedEmployee, "id">) => {
+  const sortUser = (columnName: keyof Omit<ConvertedEmployee, "id">) => {
     console.log(columnName);
 
     if (order === "AscendingOrder") {
@@ -104,13 +104,22 @@ const EmployeesPage = () => {
           (prevUser) => prevUser.id !== user.id
         );
 
-        return [user, ...filteredUsers.sort()];
+        return [
+          user,
+          ...filteredUsers.sort((a, b) =>
+            a.user.toLowerCase() > b.user.toLowerCase() ? 1 : -1
+          ),
+        ];
       } else {
         return [user, ...prevUsers.sort()];
       }
     });
     setSelectedUser(undefined);
   };
+
+  /*   useEffect(() => {
+    saveHandler(filteredUsers);
+  }, [filteredUsers]); */
 
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
@@ -180,13 +189,13 @@ const EmployeesPage = () => {
               <div className="categories">
                 <Headline
                   isActiveHeadline={headline}
-                  onClick={() => sort("fullName")}
+                  onClick={() => sortUser("fullName")}
                 >
                   Name
                 </Headline>
-                <h4 onClick={() => sort("birthday")}>Birthday</h4>
-                <h4 onClick={() => sort("salary")}>Hourly salary</h4>
-                <h4 onClick={() => sort("gender")}>Gender</h4>
+                <h4 onClick={() => sortUser("birthday")}>Birthday</h4>
+                <h4 onClick={() => sortUser("salary")}>Hourly salary</h4>
+                <h4 onClick={() => sortUser("gender")}>Gender</h4>
               </div>
 
               <DataList
