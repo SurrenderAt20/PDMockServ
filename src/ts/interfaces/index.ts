@@ -7,6 +7,10 @@ export interface Employee {
     sex: Gender;
 }
 
+export type Order = "AscendingOrder" | "DescendingOrder"
+
+export type SortColumn = keyof Omit<ConvertedEmployee, "id">
+
 export type Name = string;
 
 export type Gender = "male" | "female";

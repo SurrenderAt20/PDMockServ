@@ -1,10 +1,16 @@
 import DataList from "components/Users/DataList";
 import useFetchData from "hooks/useFetchData";
 import CardsList from "components/Users/CardsList";
-import { ConvertedEmployee, Employee, GenderFilterOption } from "ts/interfaces";
+import {
+  ConvertedEmployee,
+  Employee,
+  GenderFilterOption,
+  Order,
+  SortColumn,
+} from "ts/interfaces";
 import { useEffect, useState } from "react";
 import UserFilter from "components/Filter/UserFilter";
-import { filterUsers } from "./helpers";
+import { filterUsers, sortUsers } from "./helpers";
 import {
   FilterGrid,
   GridIconOne,
@@ -21,15 +27,15 @@ import NewUserForm from "components/NewUsers/NewUserForm";
 
 const EmployeesPage = () => {
   const [showFormModal, setShowFormModal] = useState(false);
-  const [headline, setHeadline] = useState(false);
   const [cards, setCards] = useState(false);
   const [filteredUser, setFilteredUser] = useState<Employee[]>([]);
   const [genderFilter, setGenderFilter] = useState<
     GenderFilterOption | undefined
   >();
-  const [order, setOrder] = useState("AscendingOrder");
+  const [order, setOrder] = useState<Order>("AscendingOrder");
   const [users, setUsers] = useState<ConvertedEmployee[]>([]);
   const [selectedUser, setSelectedUser] = useState<ConvertedEmployee>();
+  const [sortColumn, setSortColumn] = useState<SortColumn>("fullName");
 
   const {
     data,
@@ -73,54 +79,31 @@ const EmployeesPage = () => {
     gender: genderFilter,
   });
 
-  const sortUser = (columnName: keyof Omit<ConvertedEmployee, "id">) => {
+  const sortUser = (columnName: SortColumn) => {
+    const sorted = sortUsers(columnName, users, order);
+    setUsers(sorted);
+    setOrder(
+      order === "DescendingOrder" ? "AscendingOrder" : "DescendingOrder"
+    );
+    setSortColumn(columnName);
     console.log(columnName);
-
-    if (order === "AscendingOrder") {
-      const sorted = [...users].sort((a, b) =>
-        //@ts-ignore
-        a[columnName].toLowerCase() > b[columnName].toLowerCase() ? 1 : -1
-      );
-      setUsers(sorted);
-      setHeadline(!headline);
-      setOrder("DescendingOrder");
-    }
-
-    if (order === "DescendingOrder") {
-      const sorted = [...users].sort((a, b) =>
-        //@ts-ignore
-        a[columnName].toLowerCase() < b[columnName].toLowerCase() ? 1 : -1
-      );
-      setUsers(sorted);
-      setHeadline(!headline);
-      setOrder("AscendingOrder");
-    }
   };
 
   const saveHandler = (user: ConvertedEmployee) => {
     setUsers((prevUsers: ConvertedEmployee[]) => {
+      let usersParam = [user, ...prevUsers];
       if (selectedUser) {
         const filteredUsers = prevUsers.filter(
           (prevUser) => prevUser.id !== user.id
         );
-
-        return [
-          user,
-
-          ...filteredUsers.sort((a, b) =>
-            a.fullName.toLowerCase() > b.fullName.toLowerCase() ? 1 : -1
-          ),
-        ];
-      } else {
-        return [user, ...prevUsers.sort()];
+        usersParam = [user, ...filteredUsers];
       }
+
+      const sorted = sortUsers(sortColumn, usersParam, order);
+      return sorted;
     });
     setSelectedUser(undefined);
   };
-
-  useEffect(() => {
-    saveHandler(filteredUsers);
-  }, [filteredUsers]);
 
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
@@ -189,14 +172,29 @@ const EmployeesPage = () => {
             <section>
               <div className="categories">
                 <Headline
-                  isActiveHeadline={headline}
+                  isActiveHeadline={sortColumn === "fullName"}
                   onClick={() => sortUser("fullName")}
                 >
                   Name
                 </Headline>
-                <h4 onClick={() => sortUser("birthday")}>Birthday</h4>
-                <h4 onClick={() => sortUser("salary")}>Hourly salary</h4>
-                <h4 onClick={() => sortUser("gender")}>Gender</h4>
+                <Headline
+                  isActiveHeadline={sortColumn === "birthday"}
+                  onClick={() => sortUser("birthday")}
+                >
+                  Birthday
+                </Headline>
+                <Headline
+                  isActiveHeadline={sortColumn === "salary"}
+                  onClick={() => sortUser("salary")}
+                >
+                  Hourly salary
+                </Headline>
+                <Headline
+                  isActiveHeadline={sortColumn === "gender"}
+                  onClick={() => sortUser("gender")}
+                >
+                  Gender
+                </Headline>
               </div>
 
               <DataList
