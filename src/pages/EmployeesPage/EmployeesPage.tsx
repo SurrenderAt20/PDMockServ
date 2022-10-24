@@ -106,8 +106,9 @@ const EmployeesPage = () => {
 
         return [
           user,
+
           ...filteredUsers.sort((a, b) =>
-            a.user.toLowerCase() > b.user.toLowerCase() ? 1 : -1
+            a.fullName.toLowerCase() > b.fullName.toLowerCase() ? 1 : -1
           ),
         ];
       } else {
@@ -117,9 +118,9 @@ const EmployeesPage = () => {
     setSelectedUser(undefined);
   };
 
-  /*   useEffect(() => {
+  useEffect(() => {
     saveHandler(filteredUsers);
-  }, [filteredUsers]); */
+  }, [filteredUsers]);
 
   const toggleCards = () => {
     window.localStorage.setItem("cardFormatStorage", JSON.stringify(!cards));
