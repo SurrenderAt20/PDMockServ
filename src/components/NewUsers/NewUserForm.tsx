@@ -14,6 +14,7 @@ interface Props {
   editUser?: ConvertedEmployee;
   onClose: () => void;
   onSave: (data: any) => void;
+  onDelete?: (data: any) => void;
 }
 
 export type ValidationErrors = {
@@ -25,7 +26,12 @@ export type ValidationErrors = {
 
 /* type ValidationErrors = Partial<Record<keyof Omit<ConvertedEmployee, 'id'>, string>>; */
 
-export default function NewUserForm({ editUser, onClose, onSave }: Props) {
+export default function NewUserForm({
+  editUser,
+  onClose,
+  onSave,
+  onDelete,
+}: Props) {
   const [validationError, setValidationError] = useState<ValidationErrors>({});
 
   //oneState rather than multiple.
@@ -61,10 +67,22 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
     onClose();
   };
 
+  const deleteHandler = () => {};
+
   const modalTitle = editUser ? `Edit User` : "Create User";
+  const modalButton = editUser ? (
+    <div className="modalButton">Delete User</div>
+  ) : (
+    ""
+  );
 
   return (
-    <Modal title={modalTitle} onSave={submitHandler} onClose={onClose}>
+    <Modal
+      title={modalTitle}
+      onSave={submitHandler}
+      onDelete={modalButton}
+      onClose={onClose}
+    >
       <form id="form" onSubmit={submitHandler}>
         <div className="formHeadline">
           <h2>Personal Details</h2>
@@ -79,7 +97,11 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 </label>
                 <div className="firstLayerInputWrapper">
                   <input
-                    className={validationError.fullName ? 'nameFieldInputError' : 'nameFieldInput'}
+                    className={
+                      validationError.fullName
+                        ? "nameFieldInputError"
+                        : "nameFieldInput"
+                    }
                     type="text"
                     name="fullName"
                     onChange={changeHandler}
@@ -100,7 +122,11 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 </label>
                 <div className="firstLayerInputWrapper">
                   <input
-                    className={validationError.birthday ? 'nameFieldInputError' : 'nameFieldInput'}
+                    className={
+                      validationError.birthday
+                        ? "nameFieldInputError"
+                        : "nameFieldInput"
+                    }
                     type="date"
                     name="birthday"
                     min="2022-06-09"
@@ -122,7 +148,11 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 <span>Salary</span>
               </label>
               <input
-                className={validationError.salary ? 'nameFieldInputError' : 'nameFieldInput'}
+                className={
+                  validationError.salary
+                    ? "nameFieldInputError"
+                    : "nameFieldInput"
+                }
                 type="number"
                 name="salary"
                 min={0}
@@ -130,7 +160,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 value={userInput.salary}
               />
 
-              {validationError.salary && <h1 className="errorMsg">{validationError.salary}</h1>}
+              {validationError.salary && (
+                <h1 className="errorMsg">{validationError.salary}</h1>
+              )}
             </div>
           </div>
 
@@ -150,7 +182,9 @@ export default function NewUserForm({ editUser, onClose, onSave }: Props) {
                 onChange={changeHandler}
               />
 
-              {validationError.gender && <h1 className="errorMsg">{validationError.gender}</h1>}
+              {validationError.gender && (
+                <h1 className="errorMsg">{validationError.gender}</h1>
+              )}
               <label htmlFor="radio-one">Female</label>
               <input
                 type="radio"

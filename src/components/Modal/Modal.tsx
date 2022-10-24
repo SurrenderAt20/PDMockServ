@@ -8,7 +8,7 @@ import {
   StyledCloseIcon,
   FormContainer,
   Form,
-  Group
+  Group,
 } from "./styledModal";
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
   children: React.ReactNode;
   onSave?: (event: any) => void;
   onClose: () => void;
+  onDelete?: (event: any) => void;
 }
 
 export default function Modal({ title, children, onSave, onClose }: Props) {
@@ -33,9 +34,7 @@ export default function Modal({ title, children, onSave, onClose }: Props) {
         </ContentHeader>
         <FormContainer>
           <Form>
-            <Group>
-              {children}
-            </Group>
+            <Group>{children}</Group>
           </Form>
         </FormContainer>
       </ModalContainer>

@@ -62,6 +62,31 @@ span {
   margin: 1rem;
 }
 
+.modalButton {
+  display: inline-block;
+  background-color: rgb(215, 25, 34);
+  height: 2rem;
+  line-height: 1.9rem;
+  padding: 0px 0.75rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  font-size: 0.857143em;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  transition: color 100ms ease-in-out 0s, background-color 100ms ease-in-out 0s, border-color 100ms ease-in-out 0s, box-shadow 100ms ease-in-out 0s;
+}
+
 .nameFieldInput {
     background: rgb(255, 255, 255);
     width: 100%;

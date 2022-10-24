@@ -92,13 +92,14 @@ const EmployeesPage = () => {
   const saveHandler = (user: ConvertedEmployee) => {
     setUsers((prevUsers: ConvertedEmployee[]) => {
       let usersParam = [user, ...prevUsers];
+
       if (selectedUser) {
         const filteredUsers = prevUsers.filter(
           (prevUser) => prevUser.id !== user.id
         );
+
         usersParam = [user, ...filteredUsers];
       }
-
       const sorted = sortUsers(sortColumn, usersParam, order);
       return sorted;
     });
@@ -114,6 +115,11 @@ const EmployeesPage = () => {
   if (!isLoading && !data?.length) {
     return <div className="empty">There is no available data to fetch</div>;
   }
+
+  const handleDeleteClick = (user: ConvertedEmployee) => {
+    setSelectedUser(user);
+    setShowFormModal(true);
+  };
 
   const handleEditClick = (user: ConvertedEmployee) => {
     setSelectedUser(user);
@@ -199,6 +205,7 @@ const EmployeesPage = () => {
 
               <DataList
                 onEditClick={handleEditClick}
+                onDeleteClick={handleDeleteClick}
                 userData={filteredUsers}
               />
             </section>
