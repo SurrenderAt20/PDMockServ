@@ -122,7 +122,17 @@ const EmployeesPage = () => {
   };
 
   const handleDeleteClick = (user: ConvertedEmployee) => {
-    const removeUser = users.filter
+    setUsers((prevUsers: ConvertedEmployee[]) => {
+      const filteredUsers = prevUsers.filter((prevUsers) => prevUsers.id !== user.id)
+      return filteredUsers;
+    })
+
+  const handleOnClose = () => {
+    setSelectedUser(undefined)
+    setShowFormModal(false)
+  }
+
+
   }
 
   return (
@@ -138,7 +148,7 @@ const EmployeesPage = () => {
 
       {showFormModal && (
         <NewUserForm
-          onClose={() => setShowFormModal(false)}
+          onClose={ () => handleOnClose}
           onSave={saveHandler}
           editUser={selectedUser}
         />
