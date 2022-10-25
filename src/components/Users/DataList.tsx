@@ -7,7 +7,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 interface DataListProps {
   userData: ConvertedEmployee[];
   onEditClick: (user: ConvertedEmployee) => void;
-  onDeleteClick: (user: ConvertedEmployee) => void;
+  onDeleteClick: (user: ConvertedEmployee) => void; 
 }
 
 export function DataList({
@@ -16,6 +16,7 @@ export function DataList({
   onDeleteClick,
 }: DataListProps) {
   const [changeDetails, setChangeDetails] = useState(false);
+
 
   return (
     <div>

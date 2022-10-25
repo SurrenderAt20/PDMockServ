@@ -4,6 +4,7 @@ import {
   ModalContainer,
   ContentHeader,
   DefaultButton,
+  DeleteDefaultButton,
   TopWrapper,
   StyledCloseIcon,
   FormContainer,
@@ -19,7 +20,7 @@ interface Props {
   onDelete?: (event: any) => void;
 }
 
-export default function Modal({ title, children, onSave, onClose }: Props) {
+export default function Modal({ title, children, onSave, onClose, onDelete }: Props) {
   //new modal branch
 
   return (
@@ -28,6 +29,7 @@ export default function Modal({ title, children, onSave, onClose }: Props) {
         <ContentHeader>
           <h4>{title}</h4>
           <TopWrapper>
+            {onDelete && <DeleteDefaultButton onClick={onDelete}>Delete User</DeleteDefaultButton>}
             {onSave && <DefaultButton onClick={onSave}>Save</DefaultButton>}
             <StyledCloseIcon onClick={onClose}></StyledCloseIcon>
           </TopWrapper>

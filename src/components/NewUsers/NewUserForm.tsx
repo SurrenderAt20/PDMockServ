@@ -73,14 +73,14 @@ export default function NewUserForm({
   const modalButton = editUser ? (
     <div className="modalButton">Delete User</div>
   ) : (
-    ""
+    <div></div>
   );
 
   return (
     <Modal
       title={modalTitle}
       onSave={submitHandler}
-      onDelete={modalButton}
+      onDelete={deleteHandler}
       onClose={onClose}
     >
       <form id="form" onSubmit={submitHandler}>

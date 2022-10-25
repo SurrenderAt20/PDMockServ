@@ -37,7 +37,6 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
 `;
 
 export const DefaultButton = styled.div`
-      display: inline-block;
       background-color: rgb(25, 155, 215);
       height: 2rem;
       line-height: 1.9rem;
@@ -60,6 +59,32 @@ export const DefaultButton = styled.div`
       -webkit-font-smoothing: antialiased;
       transition: color 100ms ease-in-out 0s, background-color 100ms ease-in-out 0s, border-color 100ms ease-in-out 0s, box-shadow 100ms ease-in-out 0s;
 `;
+
+export const DeleteDefaultButton = styled.div`
+      background-color: #d11a2a;
+      height: 2rem;
+      line-height: 1.9rem;
+      padding: 0px 0.75rem;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: white;
+      margin-right: 1rem;
+      cursor: pointer;
+      font-size: 0.857143em;
+      font-weight: 600;
+      position: relative;
+      text-align: center;
+      touch-action: manipulation;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+      -webkit-font-smoothing: antialiased;
+      transition: color 100ms ease-in-out 0s, background-color 100ms ease-in-out 0s, border-color 100ms ease-in-out 0s, box-shadow 100ms ease-in-out 0s;
+
+`
 
 export const ModalContainer = styled.div`
   background-color: rgb(240, 242, 245);
@@ -119,6 +144,7 @@ export const Group = styled.div`
 
 export const TopWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-right: 1rem;
 `;

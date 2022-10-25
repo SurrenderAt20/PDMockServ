@@ -116,15 +116,14 @@ const EmployeesPage = () => {
     return <div className="empty">There is no available data to fetch</div>;
   }
 
-  const handleDeleteClick = (user: ConvertedEmployee) => {
-    setSelectedUser(user);
-    setShowFormModal(true);
-  };
-
   const handleEditClick = (user: ConvertedEmployee) => {
     setSelectedUser(user);
     setShowFormModal(true);
   };
+
+  const handleDeleteClick = (user: ConvertedEmployee) => {
+
+  }
 
   return (
     <section>
