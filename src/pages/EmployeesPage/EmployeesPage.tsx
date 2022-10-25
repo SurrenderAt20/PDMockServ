@@ -122,7 +122,7 @@ const EmployeesPage = () => {
   };
 
   const handleDeleteClick = (user: ConvertedEmployee) => {
-
+    const removeUser = users.filter
   }
 
   return (
