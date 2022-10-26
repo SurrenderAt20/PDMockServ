@@ -23,3 +23,15 @@ export const Container = styled.div`
     font-weight: 700;
   }
 `;
+
+export const PopUpModalContainer = styled.div`
+  background-color: rgb(240, 242, 245);
+  border-radius: 0.5rem;
+  box-shadow: rgb(13 80 110 / 4%) 0px 8px 16px, rgb(13 80 110 / 8%) 0px 4px 8px,
+    rgb(13 80 110 / 16%) 0px 0px 1px;
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
