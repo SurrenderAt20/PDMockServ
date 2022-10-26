@@ -67,7 +67,10 @@ export default function NewUserForm({
     onClose();
   };
 
-  const deleteHandler = () => {};
+  const deleteHandler = () => {
+      onDelete!(userInput);
+      onClose();
+  };
 
   const modalTitle = editUser ? `Edit User` : "Create User";
   const modalButton = editUser ? (
