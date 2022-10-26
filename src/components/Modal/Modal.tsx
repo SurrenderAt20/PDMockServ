@@ -17,10 +17,11 @@ interface Props {
   children: React.ReactNode;
   onSave?: (event: any) => void;
   onClose: () => void;
+  onOpen?: () => void;
   onDelete?: (event: any) => void;
 }
 
-export default function Modal({ title, children, onSave, onClose, onDelete }: Props) {
+export default function Modal({ title, children, onSave, onClose, onOpen }: Props) {
   //new modal branch
 
   return (
@@ -29,7 +30,7 @@ export default function Modal({ title, children, onSave, onClose, onDelete }: Pr
         <ContentHeader>
           <h4>{title}</h4>
           <TopWrapper>
-            {onDelete && <DeleteDefaultButton onClick={onDelete}>Delete User</DeleteDefaultButton>}
+            {onOpen && <DeleteDefaultButton onClick={onOpen}>Delete User</DeleteDefaultButton>}
             {onSave && <DefaultButton onClick={onSave}>Save</DefaultButton>}
             <StyledCloseIcon onClick={onClose}></StyledCloseIcon>
           </TopWrapper>

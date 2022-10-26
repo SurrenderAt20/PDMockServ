@@ -143,6 +143,55 @@ span {
 	transition: all 0.1s ease-in-out;
 }
 
+.removalContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.deleteHeadline{
+  display: flex;
+  justify-content: center;
+}
+
+.deleteContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.deleteButton {
+  background-color: #d11a2a;
+  height: 2rem;
+  line-height: 1.9rem;
+  padding: 0px 0.75rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  margin-right: 1rem;
+  cursor: pointer;
+  font-size: 0.857143em;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  transition: color 100ms ease-in-out 0s, background-color 100ms ease-in-out 0s, border-color 100ms ease-in-out 0s, box-shadow 100ms ease-in-out 0s;
+}
+
+.paragraphContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
 .switch-field label:hover {
 	cursor: pointer;
 }

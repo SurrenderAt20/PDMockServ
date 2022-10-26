@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Gender } from "ts/interfaces";
 import { validateForm } from "./helpers";
 import Modal from "../Modal/Modal";
+import PopUpModal from "../PopUpModal/PopUpModal";
 import "./NewUserForm.css";
 import { ConvertedEmployee } from "ts/interfaces";
 import {
@@ -14,6 +15,7 @@ interface Props {
   editUser?: ConvertedEmployee;
   onClose: () => void;
   onSave: (data: any) => void;
+  onOpen?: () => void;
   onDelete?: (data: any) => void;
 }
 
@@ -28,11 +30,13 @@ export type ValidationErrors = {
 
 export default function NewUserForm({
   editUser,
+  onOpen,
   onClose,
   onSave,
   onDelete,
 }: Props) {
   const [validationError, setValidationError] = useState<ValidationErrors>({});
+  const [showPopUpModal, setShowPopUpModal] = useState(false);
 
   //oneState rather than multiple.
   const [userInput, setUserInput] = useState({
@@ -68,24 +72,43 @@ export default function NewUserForm({
   };
 
   const deleteHandler = () => {
-      onDelete!(userInput);
-      onClose();
+    onDelete!(userInput);
+    onClose();
   };
 
   const modalTitle = editUser ? `Edit User` : "Create User";
-  const modalButton = editUser ? (
-    <div className="modalButton">Delete User</div>
-  ) : (
-    <div></div>
-  );
-
+  const popUpTitle = "Removal of user";
   return (
     <Modal
       title={modalTitle}
       onSave={submitHandler}
-      onDelete={deleteHandler}
+      onOpen={() => setShowPopUpModal(true)}
       onClose={onClose}
     >
+      {showPopUpModal && (
+        <PopUpModal
+          title={popUpTitle}
+          onClose={onClose}
+        >
+          <section>
+
+
+            <div className="deleteHeadline">
+              <h4>Confirm removal of user </h4>
+            </div>
+            <div className="paragraphContainer">
+              <p>
+                Please confirm that you wish to remove the user from the list of
+                active users
+              </p>
+            </div>
+            <div className="deleteContainer">
+              <button className="deleteButton" onClick={deleteHandler}>Delete User</button>
+            </div>
+          </section>
+        </PopUpModal>
+      )}
+
       <form id="form" onSubmit={submitHandler}>
         <div className="formHeadline">
           <h2>Personal Details</h2>
