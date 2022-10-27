@@ -5,7 +5,6 @@ export const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
   display: flex;
   justify-content: center;
-  flex-direction: column;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -75,7 +74,7 @@ export const PopUpModalContainer = styled.div`
   border-radius: 0.5rem;
   box-shadow: rgb(13 80 110 / 4%) 0px 8px 16px, rgb(13 80 110 / 8%) 0px 4px 8px,
     rgb(13 80 110 / 16%) 0px 0px 1px;
-  width: 75%;
+  width: 85%;
   height: 100%;
   overflow: hidden;
   display: flex;

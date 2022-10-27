@@ -90,9 +90,8 @@ export default function NewUserForm({
           title={popUpTitle}
           onClose={onClose}
         >
+
           <section>
-
-
             <div className="deleteHeadline">
               <h4>Confirm removal of user </h4>
             </div>
